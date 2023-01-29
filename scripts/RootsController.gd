@@ -3,6 +3,7 @@ extends Node2D
 
 
 const DISTANCE_TO_DETECT_POINTS := 20
+const MAX_STICK_CHILDREN := 3
 
 @export var all_sticks: Array[Stick]
 
@@ -37,6 +38,13 @@ func on_release_stick():
 		var distance_to_points = stick_pos.distance_to(selected_stick.position)
 		if distance_to_points > DISTANCE_TO_DETECT_POINTS:
 			continue
+
+		if stick.stick_children.size() >= MAX_STICK_CHILDREN:
+			printerr("Too many sticks!")
+			return
+
+		stick.stick_children.append(selected_stick)
+		selected_stick.stick_parent = stick
 
 		selected_stick.position = stick_pos
 		selected_stick.is_connected_to_root = true

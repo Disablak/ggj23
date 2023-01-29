@@ -28,6 +28,9 @@ points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 70)
 [node name="Stick4" parent="." instance=ExtResource("1_yro78")]
 position = Vector2(600, 97)
 
+[node name="Stick8" parent="." instance=ExtResource("1_yro78")]
+position = Vector2(754, 97)
+
 [node name="Stick5" parent="." instance=ExtResource("1_yro78")]
 position = Vector2(478, 65)
 
@@ -40,8 +43,15 @@ position = Vector2(353, 128)
 [node name="Line2D" parent="Stick6" index="1"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, -30, 30)
 
+[node name="Stick7" parent="." instance=ExtResource("1_yro78")]
+position = Vector2(172, 86)
+
+[node name="Line2D" parent="Stick7" index="1"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -30, 30)
+
 [editable path="Stick"]
 [editable path="Stick2"]
 [editable path="Stick3"]
 [editable path="Stick5"]
 [editable path="Stick6"]
+[editable path="Stick7"]

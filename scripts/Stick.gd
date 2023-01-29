@@ -9,6 +9,8 @@ extends Node2D
 
 var can_drag := false
 
+var stick_parent: Stick
+var stick_children: Array[Stick]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

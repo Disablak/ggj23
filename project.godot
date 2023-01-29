@@ -21,5 +21,6 @@ Global="*res://scripts/Globals.gd"
 
 [display]
 
+window/handheld/orientation=1
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
