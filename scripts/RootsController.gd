@@ -5,7 +5,7 @@ extends Node2D
 const DISTANCE_TO_DETECT_POINTS := 20
 const MAX_STICK_CHILDREN := 3
 
-
+@export var started_sticks_count = 3
 
 var all_sticks: Array[Stick]
 var selected_stick: Stick = null
@@ -24,10 +24,14 @@ var cur_water: int = 100:
 func _ready() -> void:
 	Global.root_controller = self
 
-	for idx in 3:
+	for idx in started_sticks_count:
 		var child = get_child(idx)
 		child.is_connected_to_root = true
 		all_sticks.append(get_child(idx))
+
+		if is_lowest(child):
+			lowest_stick = child
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -81,11 +85,15 @@ func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2
 		cur_water += Global.PART_WATER
 #		print("+ water")
 
-	if lowest_stick == null or get_stick_end_pos(lowest_stick).y < get_stick_end_pos(child_stick).y:
+	if is_lowest(child_stick):
 		lowest_stick = child_stick
 		print("new lowest stick!")
 
 	selected_stick = null
+
+
+func is_lowest(stick: Stick) -> bool:
+	return lowest_stick == null or get_stick_end_pos(lowest_stick).y < get_stick_end_pos(stick).y
 
 
 func get_stick_start_pos(stick: Stick) -> Vector2:
