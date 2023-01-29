@@ -8,7 +8,7 @@ extends Node2D
 @export var line2d: Line2D
 
 var can_drag := false
-
+var stick_vector: Vector2
 var stick_parent: Stick
 var stick_children: Array[Stick]
 
@@ -16,6 +16,8 @@ var stick_children: Array[Stick]
 func _ready() -> void:
 	start_point = line2d.points[0]
 	end_point = line2d.points[1]
+	stick_vector = start_point.direction_to(end_point)
+	change_size(1.0)
 
 
 func _input_event(viewport, event, shape_idx):
@@ -37,3 +39,9 @@ func _process(delta):
 
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_drag:
 		position = get_global_mouse_position()
+
+
+func change_size(new_size: float):
+	var new_end_pos: Vector2 = stick_vector * (new_size * Global.STICK_SIZE)
+	line2d.set_point_position(1, new_end_pos)
+	end_point = new_end_pos

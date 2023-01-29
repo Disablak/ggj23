@@ -21,5 +21,6 @@ shape = SubResource("RectangleShape2D_i1r28")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 47, 49)
+width = 20.0
 width_curve = SubResource("Curve_r2uxl")
 begin_cap_mode = 2
