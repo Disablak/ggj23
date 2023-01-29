@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmcsnc8is2ew7"]
+
+[ext_resource type="Script" path="res://scripts/Stick.gd" id="1_m0ylu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1r28"]
+size = Vector2(100, 100)
+
+[sub_resource type="Curve" id="Curve_r2uxl"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="Stick" type="StaticBody2D" node_paths=PackedStringArray("line2d")]
+input_pickable = true
+script = ExtResource("1_m0ylu")
+start_point = Vector2(0, 0)
+end_point = Vector2(0, 0)
+line2d = NodePath("Line2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i1r28")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 47, 49)
+width_curve = SubResource("Curve_r2uxl")
+begin_cap_mode = 2
