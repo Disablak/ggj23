@@ -53,6 +53,12 @@ func on_release_stick():
 			printerr("Too many sticks!")
 			return
 
+		for stick_j in all_sticks:
+			var interaction = Geometry2D.segment_intersects_segment(get_stick_start_pos(stick_j), get_stick_end_pos(stick_j), get_stick_start_pos(selected_stick), get_stick_end_pos(selected_stick))
+			if interaction != null:
+				printerr("Sticks interacts!")
+				return
+
 		set_sticks(stick, selected_stick, stick_pos)
 		return
 
@@ -80,6 +86,10 @@ func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2
 		print("new lowest stick!")
 
 	selected_stick = null
+
+
+func get_stick_start_pos(stick: Stick) -> Vector2:
+	return stick.position + stick.start_point
 
 
 func get_stick_end_pos(stick: Stick) -> Vector2:
