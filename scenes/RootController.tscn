@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2p3l0t0hf1u1"]
+[gd_scene load_steps=4 format=3 uid="uid://b2p3l0t0hf1u1"]
 
 [ext_resource type="Script" path="res://scripts/RootsController.gd" id="1_1ldu6"]
 [ext_resource type="PackedScene" uid="uid://bmcsnc8is2ew7" path="res://scenes/Stick.tscn" id="2_4pwkq"]
+[ext_resource type="Script" path="res://scripts/DrawHints.gd" id="3_16sm4"]
 
-[node name="RootController" type="Node2D" node_paths=PackedStringArray("line2d_lower_edge")]
+[node name="RootController" type="Node2D" node_paths=PackedStringArray("line2d_lower_edge", "draw_hints")]
 script = ExtResource("1_1ldu6")
 lower_edge = 1600
 line2d_lower_edge = NodePath("LowerEdge")
 stick_scene = ExtResource("2_4pwkq")
+draw_hints = NodePath("DrawHints")
 
 [node name="Stick" parent="." instance=ExtResource("2_4pwkq")]
 position = Vector2(533, 968)
@@ -33,6 +35,10 @@ points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 70)
 [node name="LowerEdge" type="Line2D" parent="."]
 width = 4.0
 default_color = Color(0.513726, 0.513726, 0, 1)
+
+[node name="DrawHints" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource("3_16sm4")
 
 [editable path="Stick"]
 [editable path="Stick2"]

@@ -9,6 +9,7 @@ const MAX_STICK_CHILDREN := 3
 @export var lower_edge: int = 800
 @export var line2d_lower_edge: Line2D
 @export var stick_scene: PackedScene
+@export var draw_hints: DrawHints
 
 var dict_pos_and_stick = {}
 var all_sticks_in_root: Array[Stick]
@@ -39,6 +40,79 @@ func _ready() -> void:
 	lower_edge_end = Vector2(get_viewport_rect().size.x, lower_edge)
 	line2d_lower_edge.add_point(lower_edge_start)
 	line2d_lower_edge.add_point(lower_edge_end)
+
+
+func _process(delta: float) -> void:
+	if selected_stick == null:
+		return
+
+	for stick in all_sticks_in_root:
+		var stick_pos = get_stick_end_pos(stick)
+		var distance_to_points = stick_pos.distance_to(selected_stick.position)
+		draw_hints.clear_hint_point()
+		draw_hints.clear_stick()
+
+		if distance_to_points > DISTANCE_TO_DETECT_POINTS:
+			continue
+
+		var dir = Vector2(cos(deg_to_rad(selected_stick.stick_angle)), sin(deg_to_rad(selected_stick.stick_angle)))
+		var future_size: int = selected_stick.stick_size
+		if lowest_stick == stick:
+			future_size *= float(cur_water) / 100
+
+		var future_stick_start = get_stick_end_pos(stick) + dir * (float(future_size) / 10)
+		var future_stick_end = get_stick_end_pos(stick) + dir * future_size
+
+		draw_hints.draw_hint(stick_pos, Color.RED)
+		draw_hints.draw_future_stick(future_stick_start, future_stick_end, Color.RED)
+
+		if stick.stick_children.size() >= MAX_STICK_CHILDREN:
+			return
+
+		for stick_child in stick.stick_children:
+			if stick_child.stick_angle == selected_stick.stick_angle:
+				printerr("Sticks angle are same!")
+				return
+
+		for stick_j in all_sticks_in_root:
+			var interaction = Geometry2D.segment_intersects_segment(get_stick_start_pos(stick_j), get_stick_end_pos(stick_j), future_stick_start, future_stick_end)
+			if interaction != null:
+				printerr("Sticks interacts!")
+				return
+
+		draw_hints.draw_hint(stick_pos, Color.GREEN)
+		draw_hints.draw_future_stick(future_stick_start, future_stick_end, Color.GREEN)
+		return
+
+
+func on_release_stick():
+	for stick in all_sticks_in_root:
+		var stick_pos = get_stick_end_pos(stick)
+		var distance_to_points = stick_pos.distance_to(selected_stick.position)
+		if distance_to_points > DISTANCE_TO_DETECT_POINTS:
+			continue
+
+		var dir = Vector2(cos(deg_to_rad(selected_stick.stick_angle)), sin(deg_to_rad(selected_stick.stick_angle)))
+		var future_stick_start = get_stick_end_pos(stick) + dir * (float(selected_stick.stick_size) / 10)
+		var future_stick_end = get_stick_end_pos(stick) + dir * selected_stick.stick_size
+
+		if stick.stick_children.size() >= MAX_STICK_CHILDREN:
+			printerr("Too many sticks!")
+			return
+
+		for stick_child in stick.stick_children:
+			if stick_child.stick_angle == selected_stick.stick_angle:
+				printerr("Sticks angle are same!")
+				return
+
+		for stick_j in all_sticks_in_root:
+			var interaction = Geometry2D.segment_intersects_segment(get_stick_start_pos(stick_j), get_stick_end_pos(stick_j), future_stick_start, future_stick_end)
+			if interaction != null:
+				printerr("Sticks interacts!")
+				return
+
+		set_sticks(stick, selected_stick, stick_pos)
+		return
 
 
 func init_start_sticks():
@@ -76,32 +150,6 @@ func on_start_drag_stick(stick: Stick):
 	selected_stick = stick
 
 
-func on_release_stick():
-	for stick in all_sticks_in_root:
-		var stick_pos = stick.position + stick.end_point
-		var distance_to_points = stick_pos.distance_to(selected_stick.position)
-		if distance_to_points > DISTANCE_TO_DETECT_POINTS:
-			continue
-
-		if stick.stick_children.size() >= MAX_STICK_CHILDREN:
-			printerr("Too many sticks!")
-			return
-
-		for stick_child in stick.stick_children:
-			if stick_child.stick_angle == selected_stick.stick_angle:
-				printerr("Sticks angle are same!")
-				return
-
-		for stick_j in all_sticks_in_root:
-			var interaction = Geometry2D.segment_intersects_segment(get_stick_start_pos(stick_j), get_stick_end_pos(stick_j), get_stick_start_pos(selected_stick), get_stick_end_pos(selected_stick))
-			if interaction != null:
-				printerr("Sticks interacts!")
-				return
-
-		set_sticks(stick, selected_stick, stick_pos)
-		return
-
-
 func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2):
 	parent_stick.stick_children.append(child_stick)
 	child_stick.stick_parent = parent_stick
@@ -125,6 +173,8 @@ func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2
 		Global.on_game_over.emit(true)
 		print("FINISH")
 
+	draw_hints.clear_hint_point()
+	draw_hints.clear_stick()
 	selected_stick = null
 
 
