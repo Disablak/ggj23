@@ -1,6 +1,7 @@
 class_name RootController
 extends Node2D
 
+signal on_wrong_release(released_stick : Stick)
 
 const DISTANCE_TO_DETECT_POINTS := 20
 const MAX_STICK_CHILDREN := 3
@@ -98,21 +99,26 @@ func on_release_stick():
 
 		if stick.stick_children.size() >= MAX_STICK_CHILDREN:
 			printerr("Too many sticks!")
+			on_wrong_release.emit(selected_stick)
 			return
 
 		for stick_child in stick.stick_children:
 			if stick_child.stick_angle == selected_stick.stick_angle:
 				printerr("Sticks angle are same!")
+				on_wrong_release.emit(selected_stick)
 				return
 
 		for stick_j in all_sticks_in_root:
 			var interaction = Geometry2D.segment_intersects_segment(get_stick_start_pos(stick_j), get_stick_end_pos(stick_j), future_stick_start, future_stick_end)
 			if interaction != null:
 				printerr("Sticks interacts!")
+				on_wrong_release.emit(selected_stick)
 				return
 
 		set_sticks(stick, selected_stick, stick_pos)
 		return
+	
+	on_wrong_release.emit(selected_stick)
 
 
 func init_start_sticks():
@@ -125,6 +131,13 @@ func init_start_sticks():
 
 		if is_lowest(stick):
 			lowest_stick = stick
+
+func get_stick_free_pos():
+	for pos in Global.CARD_STICK_POSES:
+		if dict_pos_and_stick.has(pos):
+			continue
+		
+		return pos
 
 
 func try_to_spawn_new_sticks():
@@ -148,7 +161,7 @@ func spawn_new_stick(pos) -> Stick:
 
 func on_start_drag_stick(stick: Stick):
 	selected_stick = stick
-	selected_stick.show_card(false)
+	dict_pos_and_stick.erase(stick.start_pos)
 
 
 func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2):
@@ -188,7 +201,7 @@ func is_lowest(stick: Stick) -> bool:
 
 
 func remove_from_available(stick: Stick):
-	dict_pos_and_stick.erase(stick.start_pos)
+	
 	try_to_spawn_new_sticks()
 
 
