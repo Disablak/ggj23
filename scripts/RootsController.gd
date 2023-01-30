@@ -6,12 +6,18 @@ const DISTANCE_TO_DETECT_POINTS := 20
 const MAX_STICK_CHILDREN := 3
 
 @export var sticks_count_variant := 4
+@export var lower_edge: int = 800
+@export var line2d_lower_edge: Line2D
 @export var stick_scene: PackedScene
 
 var dict_pos_and_stick = {}
 var all_sticks_in_root: Array[Stick]
 var selected_stick: Stick = null
 var lowest_stick: Stick = null
+
+var lower_edge_start: Vector2
+var lower_edge_end: Vector2
+
 
 var cur_water: int = 100:
 	set(value):
@@ -28,6 +34,11 @@ func _ready() -> void:
 
 	init_start_sticks()
 	try_to_spawn_new_sticks()
+
+	lower_edge_start = Vector2(0, lower_edge)
+	lower_edge_end = Vector2(get_viewport_rect().size.x, lower_edge)
+	line2d_lower_edge.add_point(lower_edge_start)
+	line2d_lower_edge.add_point(lower_edge_end)
 
 
 func init_start_sticks():
@@ -98,15 +109,23 @@ func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2
 	if lowest_stick == parent_stick:
 		var stick_size = float(cur_water) / 100
 		child_stick.change_size(stick_size)
-		cur_water -= Global.PART_WATER
-	else:
-		cur_water += Global.PART_WATER
 
 	if is_lowest(child_stick):
 		lowest_stick = child_stick
+		cur_water -= Global.PART_WATER
 		print("new lowest stick!")
+	else:
+		cur_water += Global.PART_WATER
+
+	if is_stick_intersects_finish(child_stick):
+		Global.on_game_over.emit(true)
+		print("lower end!")
 
 	selected_stick = null
+
+
+func is_stick_intersects_finish(stick: Stick):
+	return Geometry2D.segment_intersects_segment(get_stick_start_pos(stick), get_stick_end_pos(stick), lower_edge_start, lower_edge_end)
 
 
 func is_lowest(stick: Stick) -> bool:
