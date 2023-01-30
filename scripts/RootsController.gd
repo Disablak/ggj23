@@ -17,6 +17,7 @@ var cur_water: int = 100:
 		Global.on_updated_water.emit(cur_water)
 
 		if cur_water == 0:
+			Global.on_game_over.emit(false)
 			printerr("game over!")
 
 
