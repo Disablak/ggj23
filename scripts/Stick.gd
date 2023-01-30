@@ -14,6 +14,7 @@ var can_drag := false
 var start_pos: Vector2
 var stick_vector: Vector2
 var stick_size: int
+var stick_angle: int
 
 var stick_parent: Stick
 var stick_children: Array[Stick]
@@ -50,7 +51,10 @@ func random_generade():
 	var random_angle: int = Global.STICK_ANGLES_VARIANTS.pick_random()
 	var random_size: int = randi_range(Global.STICK_SIZE, Global.MAX_STICK_SIZE)
 	var end_point: Vector2 = Vector2(cos(deg_to_rad(random_angle)), sin(deg_to_rad(random_angle))) * random_size
+
 	stick_size = random_size
+	stick_angle = random_angle
+
 	_set_end_point(end_point)
 
 

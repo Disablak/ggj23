@@ -87,6 +87,11 @@ func on_release_stick():
 			printerr("Too many sticks!")
 			return
 
+		for stick_child in stick.stick_children:
+			if stick_child.stick_angle == selected_stick.stick_angle:
+				printerr("Sticks angle are same!")
+				return
+
 		for stick_j in all_sticks_in_root:
 			var interaction = Geometry2D.segment_intersects_segment(get_stick_start_pos(stick_j), get_stick_end_pos(stick_j), get_stick_start_pos(selected_stick), get_stick_end_pos(selected_stick))
 			if interaction != null:
@@ -113,13 +118,12 @@ func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2
 	if is_lowest(child_stick):
 		lowest_stick = child_stick
 		cur_water -= Global.PART_WATER
-		print("new lowest stick!")
 	else:
 		cur_water += Global.PART_WATER
 
 	if is_stick_intersects_finish(child_stick):
 		Global.on_game_over.emit(true)
-		print("lower end!")
+		print("FINISH")
 
 	selected_stick = null
 
