@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmcsnc8is2ew7"]
 
 [ext_resource type="Script" path="res://scripts/Stick.gd" id="1_m0ylu"]
-[ext_resource type="Texture2D" uid="uid://d3veiqtmg1tol" path="res://icon.svg" id="2_q46v3"]
+[ext_resource type="Texture2D" uid="uid://cdaifnospbwmn" path="res://assets/white.png" id="2_fajpk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1r28"]
-size = Vector2(229, 284.5)
+size = Vector2(180, 240)
 
 [sub_resource type="Curve" id="Curve_r2uxl"]
 _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
@@ -17,12 +17,13 @@ line2d = NodePath("Line2D")
 metadata/_edit_group_ = true
 
 [node name="Sprite2DCard" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.686275, 0.541176, 1)
 position = Vector2(2.08165e-12, 36)
-scale = Vector2(2, 2.4)
-texture = ExtResource("2_q46v3")
+scale = Vector2(1, 1.2)
+texture = ExtResource("2_fajpk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, 33.75)
+position = Vector2(2.08165e-12, 34)
 shape = SubResource("RectangleShape2D_i1r28")
 
 [node name="Line2D" type="Line2D" parent="."]

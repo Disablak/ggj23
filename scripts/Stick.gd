@@ -33,7 +33,7 @@ func _ready() -> void:
 
 
 func _input_event(viewport, event, shape_idx):
-	if is_connected_to_root:
+	if is_connected_to_root or not Global.visual_effects or Global.visual_effects.is_tween_card_move_plays:
 		return
 
 	if event is InputEventMouseButton:
@@ -46,7 +46,7 @@ func _input_event(viewport, event, shape_idx):
 			Global.root_controller.on_release_stick()
 
 func _process(delta):
-	if is_connected_to_root:
+	if is_connected_to_root or not Global.visual_effects or Global.visual_effects.is_tween_card_move_plays:
 		return
 
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_drag:

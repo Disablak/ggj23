@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cklgl30hr6mpj"]
 
-[ext_resource type="PackedScene" path="res://scenes/RootController.tscn" id="1_s3a7g"]
+[ext_resource type="PackedScene" uid="uid://y7x5p6jdqsbb" path="res://scenes/RootController.tscn" id="1_s3a7g"]
 [ext_resource type="PackedScene" uid="uid://bw5kknbndskdt" path="res://scenes/GUI.tscn" id="2_cgefh"]
 
 [node name="Main" type="Node2D"]
@@ -8,3 +8,5 @@
 [node name="RootController" parent="." instance=ExtResource("1_s3a7g")]
 
 [node name="GUI" parent="." instance=ExtResource("2_cgefh")]
+offset_right = 1080.0
+offset_bottom = 1920.0

@@ -7,7 +7,7 @@
 
 [node name="RootController" type="Node2D" node_paths=PackedStringArray("line2d_lower_edge", "draw_hints")]
 script = ExtResource("1_1ldu6")
-lower_edge = 1600
+lower_edge = 1200
 line2d_lower_edge = NodePath("LowerEdge")
 stick_scene = ExtResource("2_4pwkq")
 draw_hints = NodePath("DrawHints")

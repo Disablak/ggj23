@@ -33,7 +33,10 @@ var cur_water: int = 100:
 
 func _ready() -> void:
 	Global.root_controller = self
+	Global.on_ui_inited.connect(init_game)
 
+
+func init_game():
 	init_start_sticks()
 	try_to_spawn_new_sticks()
 
@@ -87,6 +90,10 @@ func _process(delta: float) -> void:
 
 
 func on_release_stick():
+	if selected_stick == null:
+		print("stick is null ")
+		return
+
 	for stick in all_sticks_in_root:
 		var stick_pos = get_stick_end_pos(stick)
 		var distance_to_points = stick_pos.distance_to(selected_stick.position)
@@ -99,25 +106,29 @@ func on_release_stick():
 
 		if stick.stick_children.size() >= MAX_STICK_CHILDREN:
 			printerr("Too many sticks!")
-			on_wrong_release.emit(selected_stick)
+			release_stick_wrong()
 			return
 
 		for stick_child in stick.stick_children:
 			if stick_child.stick_angle == selected_stick.stick_angle:
 				printerr("Sticks angle are same!")
-				on_wrong_release.emit(selected_stick)
+				release_stick_wrong()
 				return
 
 		for stick_j in all_sticks_in_root:
 			var interaction = Geometry2D.segment_intersects_segment(get_stick_start_pos(stick_j), get_stick_end_pos(stick_j), future_stick_start, future_stick_end)
 			if interaction != null:
 				printerr("Sticks interacts!")
-				on_wrong_release.emit(selected_stick)
+				release_stick_wrong()
 				return
 
 		set_sticks(stick, selected_stick, stick_pos)
 		return
-	
+
+	release_stick_wrong()
+
+
+func release_stick_wrong():
 	on_wrong_release.emit(selected_stick)
 
 
@@ -132,16 +143,9 @@ func init_start_sticks():
 		if is_lowest(stick):
 			lowest_stick = stick
 
-func get_stick_free_pos():
-	for pos in Global.CARD_STICK_POSES:
-		if dict_pos_and_stick.has(pos):
-			continue
-		
-		return pos
-
 
 func try_to_spawn_new_sticks():
-	for pos in Global.CARD_STICK_POSES:
+	for pos in Global.card_points:
 		if dict_pos_and_stick.has(pos):
 			continue
 
@@ -162,6 +166,7 @@ func spawn_new_stick(pos) -> Stick:
 func on_start_drag_stick(stick: Stick):
 	selected_stick = stick
 	dict_pos_and_stick.erase(stick.start_pos)
+	stick.show_card(false)
 
 
 func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2):
@@ -171,7 +176,6 @@ func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2
 	child_stick.position = parent_end_pos
 	child_stick.is_connected_to_root = true
 	all_sticks_in_root.append(child_stick)
-	remove_from_available(child_stick)
 
 	if lowest_stick == parent_stick:
 		var stick_size = float(cur_water) / 100
@@ -189,6 +193,9 @@ func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2
 
 	draw_hints.clear_hint_point()
 	draw_hints.clear_stick()
+
+	try_to_spawn_new_sticks()
+
 	selected_stick = null
 
 
@@ -198,11 +205,6 @@ func is_stick_intersects_finish(stick: Stick):
 
 func is_lowest(stick: Stick) -> bool:
 	return lowest_stick == null or get_stick_end_pos(lowest_stick).y < get_stick_end_pos(stick).y
-
-
-func remove_from_available(stick: Stick):
-	
-	try_to_spawn_new_sticks()
 
 
 func get_stick_start_pos(stick: Stick) -> Vector2:
