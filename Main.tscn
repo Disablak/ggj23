@@ -1,80 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfdh6pam7jsui"]
+[gd_scene load_steps=3 format=3 uid="uid://dbvb6nlofhkb"]
 
-[ext_resource type="Script" path="res://scripts/RootsController.gd" id="1_4xd6k"]
-[ext_resource type="PackedScene" uid="uid://bmcsnc8is2ew7" path="res://scenes/Stick.tscn" id="1_yro78"]
-[ext_resource type="Script" path="res://scripts/GUI.gd" id="3_f8p5w"]
+[ext_resource type="PackedScene" uid="uid://b2p3l0t0hf1u1" path="res://scenes/RootController.tscn" id="1_s3a7g"]
+[ext_resource type="PackedScene" uid="uid://bw5kknbndskdt" path="res://scenes/GUI.tscn" id="2_cgefh"]
 
-[node name="RootController" type="Node2D"]
-script = ExtResource("1_4xd6k")
+[node name="Main" type="Node2D"]
 
-[node name="Stick" parent="." instance=ExtResource("1_yro78")]
-position = Vector2(533, 968)
+[node name="RootController" parent="." instance=ExtResource("1_s3a7g")]
 
-[node name="Line2D" parent="Stick" index="1"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 50, 50)
-
-[node name="Stick2" parent="." instance=ExtResource("1_yro78")]
-position = Vector2(533, 968)
-
-[node name="Line2D" parent="Stick2" index="1"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, -50, 50)
-
-[node name="Stick3" parent="." instance=ExtResource("1_yro78")]
-position = Vector2(533, 968)
-
-[node name="Line2D" parent="Stick3" index="1"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 70)
-
-[node name="Stick4" parent="." instance=ExtResource("1_yro78")]
-position = Vector2(682, 686)
-
-[node name="Stick8" parent="." instance=ExtResource("1_yro78")]
-position = Vector2(836, 686)
-
-[node name="Stick5" parent="." instance=ExtResource("1_yro78")]
-position = Vector2(560, 654)
-
-[node name="Line2D" parent="Stick5" index="1"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 70)
-
-[node name="Stick6" parent="." instance=ExtResource("1_yro78")]
-position = Vector2(435, 717)
-
-[node name="Line2D" parent="Stick6" index="1"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, -30, 30)
-
-[node name="Stick7" parent="." instance=ExtResource("1_yro78")]
-position = Vector2(254, 675)
-
-[node name="Line2D" parent="Stick7" index="1"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, -30, 30)
-
-[node name="GUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1080.0
-offset_bottom = 1920.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("3_f8p5w")
-
-[node name="LabelWater" type="Label" parent="GUI"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 119.0
-grow_horizontal = 2
-theme_type_variation = &"HeaderLarge"
-text = "WATER: 100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[editable path="Stick"]
-[editable path="Stick2"]
-[editable path="Stick3"]
-[editable path="Stick5"]
-[editable path="Stick6"]
-[editable path="Stick7"]
+[node name="GUI" parent="." instance=ExtResource("2_cgefh")]
