@@ -15,21 +15,21 @@ draw_hints = NodePath("DrawHints")
 position = Vector2(533, 968)
 is_start_stick = true
 
-[node name="Line2D" parent="Stick" index="1"]
+[node name="Line2D" parent="Stick" index="2"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 50, 50)
 
 [node name="Stick2" parent="." instance=ExtResource("2_4pwkq")]
 position = Vector2(533, 968)
 is_start_stick = true
 
-[node name="Line2D" parent="Stick2" index="1"]
+[node name="Line2D" parent="Stick2" index="2"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, -50, 50)
 
 [node name="Stick3" parent="." instance=ExtResource("2_4pwkq")]
 position = Vector2(533, 968)
 is_start_stick = true
 
-[node name="Line2D" parent="Stick3" index="1"]
+[node name="Line2D" parent="Stick3" index="2"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 70)
 
 [node name="LowerEdge" type="Line2D" parent="."]

@@ -1,6 +1,7 @@
 class_name Stick
 extends Node2D
 
+@onready var sprite_card := $Sprite2DCard
 
 @export var is_start_stick = false
 @export var line2d: Line2D
@@ -8,8 +9,13 @@ extends Node2D
 var start_point: Vector2
 var end_point: Vector2
 
-var is_connected_to_root: bool
+var is_connected_to_root: bool:
+	set(value):
+		show_card(not value)
+		is_connected_to_root = value
+
 var can_drag := false
+var card_is_visible := true
 
 var start_pos: Vector2
 var stick_vector: Vector2
@@ -61,6 +67,14 @@ func random_generade():
 func change_size(new_size: float):
 	var new_end_pos: Vector2 = stick_vector * (new_size * stick_size)
 	_set_end_point(new_end_pos)
+
+
+func show_card(show: bool):
+	if show == card_is_visible:
+		return
+
+	sprite_card.visible = show
+	card_is_visible = show
 
 
 func _set_end_point(point: Vector2):

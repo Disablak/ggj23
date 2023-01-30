@@ -148,6 +148,7 @@ func spawn_new_stick(pos) -> Stick:
 
 func on_start_drag_stick(stick: Stick):
 	selected_stick = stick
+	selected_stick.show_card(false)
 
 
 func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2):

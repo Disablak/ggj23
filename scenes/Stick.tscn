@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmcsnc8is2ew7"]
+[gd_scene load_steps=5 format=3 uid="uid://bmcsnc8is2ew7"]
 
 [ext_resource type="Script" path="res://scripts/Stick.gd" id="1_m0ylu"]
+[ext_resource type="Texture2D" uid="uid://d3veiqtmg1tol" path="res://icon.svg" id="2_q46v3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1r28"]
-size = Vector2(100, 100)
+size = Vector2(229, 284.5)
 
 [sub_resource type="Curve" id="Curve_r2uxl"]
 _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
@@ -12,12 +13,16 @@ point_count = 2
 [node name="Stick" type="StaticBody2D" node_paths=PackedStringArray("line2d")]
 input_pickable = true
 script = ExtResource("1_m0ylu")
-start_point = Vector2(0, 0)
-end_point = Vector2(0, 0)
 line2d = NodePath("Line2D")
 metadata/_edit_group_ = true
 
+[node name="Sprite2DCard" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 36)
+scale = Vector2(2, 2.4)
+texture = ExtResource("2_q46v3")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 33.75)
 shape = SubResource("RectangleShape2D_i1r28")
 
 [node name="Line2D" type="Line2D" parent="."]
