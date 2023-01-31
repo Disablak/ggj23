@@ -136,8 +136,12 @@ func on_release_stick(id: int):
 			continue
 
 		var dir = Vector2(cos(deg_to_rad(selected_stick.stick_angle)), sin(deg_to_rad(selected_stick.stick_angle)))
-		var future_stick_start = get_stick_end_pos(stick) + dir * (float(selected_stick.stick_size) / 10)
-		var future_stick_end = get_stick_end_pos(stick) + dir * selected_stick.stick_size
+		var future_size: int = selected_stick.stick_size
+		if lowest_stick == stick:
+			future_size *= float(cur_water) / 100
+
+		var future_stick_start = get_stick_end_pos(stick) + dir * (float(future_size) / 10)
+		var future_stick_end = get_stick_end_pos(stick) + dir * future_size
 
 		if stick.stick_children.size() >= MAX_STICK_CHILDREN:
 			printerr("Too many sticks!")

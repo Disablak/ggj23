@@ -13,7 +13,16 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_ghebo")
 
+[node name="ButtonStart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 302.0
+offset_right = 696.0
+offset_bottom = 676.0
+text = "START"
+
 [node name="LabelWater" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0

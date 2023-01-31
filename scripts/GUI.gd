@@ -1,6 +1,8 @@
+class_name GUI
 extends Control
 
 
+@onready var btn_start: Button = $ButtonStart
 @onready var label_water: Label = $LabelWater
 @onready var box_container: HBoxContainer = $HBoxContainer
 
@@ -20,3 +22,12 @@ func _ready() -> void:
 
 func _on_updated_water(value: int):
 	label_water.text = "WATER: {0}".format([value])
+
+
+func on_start_move_down():
+	btn_start.visible = false
+
+
+func on_moved_down():
+	label_water.visible = true
+
