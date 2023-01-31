@@ -186,7 +186,6 @@ func spawn_new_stick(pos) -> Stick:
 
 func on_start_drag_stick(stick: Stick):
 	selected_stick = stick
-	dict_pos_and_stick.erase(stick.start_pos)
 	stick.show_card(false)
 
 
@@ -197,6 +196,7 @@ func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2
 	child_stick.position = parent_end_pos
 	child_stick.is_connected_to_root = true
 	all_sticks_in_root.append(child_stick)
+	dict_pos_and_stick.erase(child_stick.start_pos)
 
 	if lowest_stick == parent_stick:
 		var stick_size = float(cur_water) / 100
