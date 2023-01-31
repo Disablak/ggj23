@@ -14,13 +14,18 @@ const MAX_STICK_CHILDREN := 3
 
 var dict_pos_and_stick = {}
 var all_sticks_in_root: Array[Stick]
-var selected_stick: Stick = null
+var selected_stick: Stick:
+	get: return get_stick(cur_stick_id)
+
 var lowest_stick: Stick = null
 
 var lower_edge_start: Vector2
 var lower_edge_end: Vector2
 
 var obstacles: Array[Obstacle]
+
+var available_id: int = 0
+var cur_stick_id: int = -1
 
 
 var cur_water: int = 100:
@@ -56,7 +61,9 @@ func find_all_obstacles():
 
 
 func _process(delta: float) -> void:
-	if selected_stick == null:
+	move_stick()
+
+	if cur_stick_id == -1:
 		return
 
 	for stick in all_sticks_in_root:
@@ -103,9 +110,23 @@ func _process(delta: float) -> void:
 		return
 
 
-func on_release_stick():
-	if selected_stick == null:
-		print("stick is null ")
+func move_stick():
+	if cur_stick_id == -1:
+		return
+
+	if selected_stick.is_connected_to_root or not Global.visual_effects or Global.visual_effects.is_tween_card_move_plays:
+		return
+
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and selected_stick.can_drag:
+		selected_stick.position = get_global_mouse_position()
+
+
+func on_start_drag_stick(id: int):
+	cur_stick_id = id
+
+
+func on_release_stick(id: int):
+	if cur_stick_id == -1:
 		return
 
 	for stick in all_sticks_in_root:
@@ -150,6 +171,7 @@ func on_release_stick():
 
 func release_stick_wrong():
 	on_wrong_release.emit(selected_stick)
+	cur_stick_id = -1
 
 
 func init_start_sticks():
@@ -181,12 +203,9 @@ func spawn_new_stick(pos) -> Stick:
 	new_stick.start_pos = pos
 	new_stick.position = pos
 	new_stick.show_card(true)
+	new_stick.id = available_id
+	available_id += 1
 	return new_stick
-
-
-func on_start_drag_stick(stick: Stick):
-	selected_stick = stick
-	stick.show_card(false)
 
 
 func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2):
@@ -217,7 +236,7 @@ func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2
 
 	try_to_spawn_new_sticks()
 
-	selected_stick = null
+	cur_stick_id = -1
 
 
 func is_stick_intersects_finish(stick: Stick):
@@ -234,3 +253,11 @@ func get_stick_start_pos(stick: Stick) -> Vector2:
 
 func get_stick_end_pos(stick: Stick) -> Vector2:
 	return stick.position + stick.end_point
+
+
+func get_stick(id) -> Stick:
+	for stick in dict_pos_and_stick.values():
+		if stick.id == id:
+			return stick
+
+	return null
