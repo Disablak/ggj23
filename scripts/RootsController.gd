@@ -6,12 +6,11 @@ signal on_wrong_release(released_stick : Stick)
 const DISTANCE_TO_DETECT_POINTS := 20
 const MAX_STICK_CHILDREN := 3
 
-@export var sticks_count_variant := 4
-@export var lower_edge: int = 800
-@export var line2d_lower_edge: Line2D
+@onready var draw_hints: DrawHints = $DrawHints
 @export var stick_scene: PackedScene
-@export var draw_hints: DrawHints
 
+var level: Level
+var sticks_count_variant := 4
 var dict_pos_and_stick = {}
 var all_sticks_in_root: Array[Stick]
 var selected_stick: Stick:
@@ -35,23 +34,45 @@ var cur_water: int = 100:
 
 		if cur_water == 0:
 			Global.on_game_over.emit(false)
-			printerr("game over!")
 
 
 func _ready() -> void:
 	Global.root_controller = self
-	Global.on_ui_inited.connect(init_game)
 
 
-func init_game():
+func init_game(level: Level):
+	add_child(level)
+	self.level = level
+
 	init_start_sticks()
-	try_to_spawn_new_sticks()
 	find_all_obstacles()
 
-	lower_edge_start = Vector2(0, lower_edge)
-	lower_edge_end = Vector2(get_viewport_rect().size.x, lower_edge)
-	line2d_lower_edge.add_point(lower_edge_start)
-	line2d_lower_edge.add_point(lower_edge_end)
+	lower_edge_start = level.line_lower_edge.get_point_position(0)
+	lower_edge_end = level.line_lower_edge.get_point_position(1)
+
+	cur_water = 100
+
+
+func deinit_game():
+	all_sticks_in_root.clear()
+
+	for stick in dict_pos_and_stick.values():
+		stick.queue_free()
+
+	dict_pos_and_stick.clear()
+
+	lowest_stick = null
+	obstacles.clear()
+
+	available_id = 0
+	cur_stick_id = -1
+
+	level.queue_free()
+	level = null
+
+
+func on_moved_down():
+	try_to_spawn_new_sticks()
 
 
 func find_all_obstacles():
@@ -179,7 +200,7 @@ func release_stick_wrong():
 
 
 func init_start_sticks():
-	for stick in get_children():
+	for stick in level.get_children():
 		if not stick is Stick:
 			continue
 
@@ -200,7 +221,7 @@ func try_to_spawn_new_sticks():
 
 func spawn_new_stick(pos) -> Stick:
 	var new_stick: Stick = stick_scene.instantiate()
-	add_child(new_stick)
+	level.add_child(new_stick)
 	dict_pos_and_stick[pos] = new_stick
 
 	new_stick.random_generade()
