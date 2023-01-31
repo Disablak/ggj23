@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bppntwk0041qs"]
+
+[ext_resource type="PackedScene" uid="uid://b3vo7or8n5ot5" path="res://levels/LevelBase.tscn" id="1_k1g1a"]
+
+[node name="Level" instance=ExtResource("1_k1g1a")]
+
+[node name="LowerEdge" parent="." index="4"]
+points = PackedVector2Array(-200, 1250, 1200, 1250)
+
+[editable path="Stick"]
+[editable path="Stick2"]
+[editable path="Stick3"]

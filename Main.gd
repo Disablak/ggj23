@@ -43,8 +43,20 @@ func on_moved_to_game():
 
 
 func _on_game_over(is_win: bool):
-	if not is_win:
+	if is_win:
+		next_level()
+	else:
 		restart_level()
+
+
+func next_level():
+	level_id += 1
+
+	if level_id >= levels.size():
+		print("All levels completed")
+		return
+
+	restart_level()
 
 
 func restart_level():

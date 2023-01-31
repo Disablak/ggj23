@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cklgl30hr6mpj"]
+[gd_scene load_steps=7 format=3 uid="uid://cklgl30hr6mpj"]
 
 [ext_resource type="PackedScene" uid="uid://chpps3fg4hpyo" path="res://scenes/RootController.tscn" id="1_s3a7g"]
 [ext_resource type="Script" path="res://Main.gd" id="1_t3ajk"]
 [ext_resource type="PackedScene" uid="uid://bw5kknbndskdt" path="res://scenes/GUI.tscn" id="2_cgefh"]
 [ext_resource type="PackedScene" uid="uid://ckcnk1vrrcpxv" path="res://levels/LevelPlayground.tscn" id="2_s1o58"]
+[ext_resource type="PackedScene" uid="uid://cf3judo7gtoat" path="res://levels/Level1.tscn" id="3_5cek2"]
+[ext_resource type="PackedScene" uid="uid://bppntwk0041qs" path="res://levels/Level2.tscn" id="4_10t4c"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_t3ajk")
-levels = [ExtResource("2_s1o58")]
+level_id = 1
+levels = [ExtResource("2_s1o58"), ExtResource("3_5cek2"), ExtResource("4_10t4c")]
 
 [node name="RootController" parent="." instance=ExtResource("1_s3a7g")]
 
