@@ -43,6 +43,7 @@ func _ready() -> void:
 func init_game(level: Level):
 	add_child(level)
 	self.level = level
+	level.line_lower_edge.visible = false
 
 	init_start_sticks()
 	find_all_obstacles()
@@ -72,6 +73,7 @@ func deinit_game():
 
 
 func on_moved_down():
+	level.line_lower_edge.visible = true
 	try_to_spawn_new_sticks()
 
 
