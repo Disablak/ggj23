@@ -20,6 +20,8 @@ var lowest_stick: Stick = null
 var lower_edge_start: Vector2
 var lower_edge_end: Vector2
 
+var obstacles: Array[Obstacle]
+
 
 var cur_water: int = 100:
 	set(value):
@@ -39,11 +41,18 @@ func _ready() -> void:
 func init_game():
 	init_start_sticks()
 	try_to_spawn_new_sticks()
+	find_all_obstacles()
 
 	lower_edge_start = Vector2(0, lower_edge)
 	lower_edge_end = Vector2(get_viewport_rect().size.x, lower_edge)
 	line2d_lower_edge.add_point(lower_edge_start)
 	line2d_lower_edge.add_point(lower_edge_end)
+
+
+func find_all_obstacles():
+	for child in get_children():
+		if child is Obstacle:
+			obstacles.append(child)
 
 
 func _process(delta: float) -> void:
@@ -84,6 +93,11 @@ func _process(delta: float) -> void:
 				printerr("Sticks interacts!")
 				return
 
+		for obstacle in obstacles:
+			if obstacle.is_intersect_obstacle(future_stick_start, future_stick_end):
+				printerr("Sticks intersect obstacle!")
+				return
+
 		draw_hints.draw_hint(stick_pos, Color.GREEN)
 		draw_hints.draw_future_stick(future_stick_start, future_stick_end, Color.GREEN)
 		return
@@ -119,6 +133,12 @@ func on_release_stick():
 			var interaction = Geometry2D.segment_intersects_segment(get_stick_start_pos(stick_j), get_stick_end_pos(stick_j), future_stick_start, future_stick_end)
 			if interaction != null:
 				printerr("Sticks interacts!")
+				release_stick_wrong()
+				return
+
+		for obstacle in obstacles:
+			if obstacle.is_intersect_obstacle(future_stick_start, future_stick_end):
+				printerr("Sticks intersect obstacle!")
 				release_stick_wrong()
 				return
 

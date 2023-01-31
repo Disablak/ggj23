@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://y7x5p6jdqsbb"]
+[gd_scene load_steps=6 format=3 uid="uid://y7x5p6jdqsbb"]
 
 [ext_resource type="Script" path="res://scripts/RootsController.gd" id="1_1ldu6"]
 [ext_resource type="PackedScene" uid="uid://bmcsnc8is2ew7" path="res://scenes/Stick.tscn" id="2_4pwkq"]
 [ext_resource type="Script" path="res://scripts/DrawHints.gd" id="3_16sm4"]
 [ext_resource type="Script" path="res://scripts/VisualEffects.gd" id="4_1hp63"]
+[ext_resource type="Script" path="res://scripts/Obstacle.gd" id="5_atx62"]
 
 [node name="RootController" type="Node2D" node_paths=PackedStringArray("line2d_lower_edge", "draw_hints")]
 script = ExtResource("1_1ldu6")
@@ -43,6 +44,22 @@ script = ExtResource("3_16sm4")
 
 [node name="VisualEffects" type="Node2D" parent="."]
 script = ExtResource("4_1hp63")
+
+[node name="Obstacle" type="Node2D" parent="."]
+position = Vector2(588, 1161)
+script = ExtResource("5_atx62")
+
+[node name="Line2D" type="Line2D" parent="Obstacle"]
+points = PackedVector2Array(0, 0, 100, 2.08165e-12)
+default_color = Color(1, 0.2, 0.160784, 1)
+
+[node name="Obstacle2" type="Node2D" parent="."]
+position = Vector2(311, 1103)
+script = ExtResource("5_atx62")
+
+[node name="Line2D" type="Line2D" parent="Obstacle2"]
+points = PackedVector2Array(64, 1, 150, 47, 110, 151, -22, 136, -70, 75, -25, 10, 69, -1)
+default_color = Color(1, 0.2, 0.160784, 1)
 
 [connection signal="on_wrong_release" from="." to="VisualEffects" method="_on_root_controller_on_wrong_release"]
 
