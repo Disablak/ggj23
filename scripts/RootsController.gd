@@ -94,6 +94,7 @@ func _process(delta: float) -> void:
 		var distance_to_points = stick_pos.distance_to(selected_stick.position)
 		draw_hints.clear_hint_point()
 		draw_hints.clear_stick()
+		show_hint_water(null)
 
 		if distance_to_points > DISTANCE_TO_DETECT_POINTS:
 			continue
@@ -108,6 +109,11 @@ func _process(delta: float) -> void:
 
 		draw_hints.draw_hint(stick_pos, Color.RED)
 		draw_hints.draw_future_stick(future_stick_start, future_stick_end, Color.RED)
+
+		if future_stick_end.y > get_stick_end_pos(lowest_stick).y:
+			show_hint_water(false)
+		else:
+			show_hint_water(true)
 
 		if stick.stick_children.size() >= MAX_STICK_CHILDREN:
 			return
@@ -288,3 +294,8 @@ func get_stick(id) -> Stick:
 			return stick
 
 	return null
+
+
+func show_hint_water(plus_water):
+	Global.gui.show_hint_water(cur_water, plus_water)
+

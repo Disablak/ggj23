@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/GUI.gd" id="1_ghebo"]
 [ext_resource type="Texture2D" uid="uid://cdaifnospbwmn" path="res://assets/white.png" id="2_26old"]
-[ext_resource type="Theme" uid="uid://d0ah1at3t54jg" path="res://theme.tres" id="2_ycbid"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jrvaq"]
+font_size = 60
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -29,8 +31,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 173.0
 grow_horizontal = 2
-theme = ExtResource("2_ycbid")
 text = "WATER: 100"
+label_settings = SubResource("LabelSettings_jrvaq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
