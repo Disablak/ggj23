@@ -5,6 +5,10 @@ extends Control
 @onready var btn_start: Button = $ButtonStart
 @onready var label_water: Label = $LabelWater
 @onready var box_container: HBoxContainer = $HBoxContainer
+@onready var fade: ColorRect = $Fade
+
+const FADE_TIME := 1
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,3 +49,11 @@ func show_hint_water(cur_water: int, plus_water):
 			label_water.text = "WATER: {0} - {1}".format([cur_water, Global.PART_WATER])
 		else:
 			label_water.text = "WATER: {0} - {1}".format([cur_water, Global.PART_WATER])
+
+
+func fade_show(show) -> Tween:
+	var tween = create_tween()
+	var color_to = Color.BLACK if show else Color(Color.BLACK, 0.0)
+	tween.tween_property(fade, "color", color_to, FADE_TIME)
+
+	return tween

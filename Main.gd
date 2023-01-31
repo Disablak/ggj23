@@ -10,12 +10,13 @@ extends Node2D
 
 const MENU_POS = Vector2(0, -800)
 const GAME_POS = Vector2.ZERO
-const TWEEN_TIME = 2
+const TWEEN_TIME = 1
 
 
 func _ready() -> void:
 	Global.on_game_over.connect(_on_game_over)
 
+	gui.fade_show(false)
 	on_game_started()
 
 
@@ -43,10 +44,15 @@ func on_moved_to_game():
 
 
 func _on_game_over(is_win: bool):
+	await gui.fade_show(true).finished
+	await get_tree().create_timer(0.3).timeout
+
 	if is_win:
 		next_level()
 	else:
 		restart_level()
+
+	gui.fade_show(false)
 
 
 func next_level():
