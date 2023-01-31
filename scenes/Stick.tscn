@@ -7,7 +7,7 @@
 size = Vector2(180, 240)
 
 [sub_resource type="Curve" id="Curve_r2uxl"]
-_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+_data = [Vector2(0, 1), 0.0, -0.870038, 0, 1, Vector2(1, 0.129962), -0.870038, 0.0, 1, 0]
 point_count = 2
 
 [node name="Stick" type="StaticBody2D" node_paths=PackedStringArray("line2d")]
@@ -17,6 +17,7 @@ line2d = NodePath("Line2D")
 metadata/_edit_group_ = true
 
 [node name="Sprite2DCard" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 0.686275, 0.541176, 1)
 position = Vector2(2.08165e-12, 36)
 scale = Vector2(1, 1.2)

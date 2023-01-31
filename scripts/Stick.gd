@@ -15,7 +15,7 @@ var is_connected_to_root: bool:
 		is_connected_to_root = value
 
 var can_drag := false
-var card_is_visible := true
+var card_is_visible := false
 
 var start_pos: Vector2
 var stick_vector: Vector2

@@ -160,6 +160,7 @@ func spawn_new_stick(pos) -> Stick:
 	new_stick.random_generade()
 	new_stick.start_pos = pos
 	new_stick.position = pos
+	new_stick.show_card(true)
 	return new_stick
 
 

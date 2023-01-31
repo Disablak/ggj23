@@ -7,31 +7,31 @@
 
 [node name="RootController" type="Node2D" node_paths=PackedStringArray("line2d_lower_edge", "draw_hints")]
 script = ExtResource("1_1ldu6")
-lower_edge = 1200
+lower_edge = 1400
 line2d_lower_edge = NodePath("LowerEdge")
 stick_scene = ExtResource("2_4pwkq")
 draw_hints = NodePath("DrawHints")
 
 [node name="Stick" parent="." instance=ExtResource("2_4pwkq")]
-position = Vector2(533, 968)
+position = Vector2(533, 700)
 is_start_stick = true
 
 [node name="Line2D" parent="Stick" index="2"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 50, 50)
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 100, 100)
 
 [node name="Stick2" parent="." instance=ExtResource("2_4pwkq")]
-position = Vector2(533, 968)
+position = Vector2(533, 700)
 is_start_stick = true
 
 [node name="Line2D" parent="Stick2" index="2"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, -50, 50)
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -100, 100)
 
 [node name="Stick3" parent="." instance=ExtResource("2_4pwkq")]
-position = Vector2(533, 968)
+position = Vector2(533, 700)
 is_start_stick = true
 
 [node name="Line2D" parent="Stick3" index="2"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 70)
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 150)
 
 [node name="LowerEdge" type="Line2D" parent="."]
 width = 4.0
