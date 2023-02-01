@@ -31,4 +31,5 @@ shape = SubResource("RectangleShape2D_i1r28")
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 47, 49)
 width = 20.0
 width_curve = SubResource("Curve_r2uxl")
+default_color = Color(0.701961, 0.384314, 0.384314, 1)
 begin_cap_mode = 2

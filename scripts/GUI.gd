@@ -16,6 +16,8 @@ func _ready() -> void:
 
 	Global.on_updated_water.connect(_on_updated_water)
 
+	fade.visible = true
+
 	await get_tree().process_frame
 	for child in box_container.get_children():
 		var pos = child.global_position + child.size / 2
