@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmcsnc8is2ew7"]
 
 [ext_resource type="Script" path="res://scripts/Stick.gd" id="1_m0ylu"]
-[ext_resource type="Texture2D" uid="uid://cdaifnospbwmn" path="res://assets/white.png" id="2_fajpk"]
+[ext_resource type="Texture2D" uid="uid://dw68yyq7nyso0" path="res://assets/white.jpg" id="2_16rnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1r28"]
 size = Vector2(180, 240)
@@ -21,11 +21,12 @@ visible = false
 self_modulate = Color(1, 0.686275, 0.541176, 1)
 position = Vector2(2.08165e-12, 36)
 scale = Vector2(1, 1.2)
-texture = ExtResource("2_fajpk")
+texture = ExtResource("2_16rnt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 34)
 shape = SubResource("RectangleShape2D_i1r28")
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 47, 49)
