@@ -8,7 +8,7 @@ extends Control
 @onready var fade: ColorRect = $Fade
 
 const FADE_TIME := 1
-
+const LABEL_WATER_TWEEN_DURATION := 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +26,17 @@ func _ready() -> void:
 
 
 func _on_updated_water(value: int):
+	var tween = create_tween()
+	var start_value = label_water.text.split(':')[1].to_int()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.tween_method(set_label_water_text, start_value,
+		value, LABEL_WATER_TWEEN_DURATION)
+	tween.tween_property(label_water, "scale", 
+		Vector2(1.1, 1.1), 0.2).from(Vector2.ONE)
+	tween.tween_property(label_water, "scale", 
+		Vector2.ONE, 0.2)
+
+func set_label_water_text(value: int):
 	label_water.text = "WATER: {0}".format([value])
 
 
