@@ -41,6 +41,7 @@ func _on_updated_water(prev_value: int, cur_value: int):
 		Vector2.ONE, 0.2)
 
 func set_label_water_text(value: int):
+	label_water.label_settings.font_color = Color.WHITE
 	label_water.text = "{0}".format([value])
 
 

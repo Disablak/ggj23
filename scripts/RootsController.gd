@@ -204,6 +204,9 @@ func on_release_stick(id: int):
 
 
 func release_stick_wrong():
+	draw_hints.clear_hint_point()
+	draw_hints.clear_stick()
+	show_hint_water(null)
 	on_wrong_release.emit(selected_stick)
 	cur_stick_id = -1
 
@@ -216,6 +219,19 @@ func init_start_sticks():
 		stick.is_connected_to_root = true
 		stick.line2d.default_color.a = 1.0
 		all_sticks_in_root.append(stick)
+
+		for stick_j in level.get_children():
+			if not stick_j is Stick:
+				continue
+
+			var distance_to_points = get_stick_end_pos(stick).distance_to(get_stick_start_pos(stick_j))
+			if distance_to_points < DISTANCE_TO_DETECT_POINTS:
+				if stick.stick_children.size() >= MAX_STICK_CHILDREN:
+					printerr("sticks have max children")
+					continue
+
+				stick.stick_children.append(stick_j)
+				print("connected in init")
 
 		if is_lowest(stick):
 			lowest_stick = stick

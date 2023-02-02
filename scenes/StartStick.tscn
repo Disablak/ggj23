@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv6lfet11yn0t"]
+
+[ext_resource type="PackedScene" uid="uid://bmcsnc8is2ew7" path="res://scenes/Stick.tscn" id="1_68f7e"]
+
+[node name="Stick" instance=ExtResource("1_68f7e")]
+input_pickable = false
+is_start_stick = true
+
+[node name="Sprite2DCard" parent="." index="0"]
+visible = false
+
+[node name="Sprite2DCard2" parent="." index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="." index="2"]
+visible = false
+
+[node name="Line2D" parent="." index="3"]
+default_color = Color(0.701961, 0.384314, 0.384314, 1)
