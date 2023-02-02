@@ -15,22 +15,25 @@ script = ExtResource("1_8leeb")
 position = Vector2(533, 700)
 is_start_stick = true
 
-[node name="Line2D" parent="Stick" index="2"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 100, 100)
+[node name="Line2D" parent="Stick" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 50, 50)
+default_color = Color(0.701961, 0.384314, 0.384314, 1)
 
 [node name="Stick2" parent="." instance=ExtResource("1_jo4in")]
 position = Vector2(533, 700)
 is_start_stick = true
 
-[node name="Line2D" parent="Stick2" index="2"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, -100, 100)
+[node name="Line2D" parent="Stick2" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -50, 50)
+default_color = Color(0.701961, 0.384314, 0.384314, 1)
 
 [node name="Stick3" parent="." instance=ExtResource("1_jo4in")]
 position = Vector2(533, 700)
 is_start_stick = true
 
-[node name="Line2D" parent="Stick3" index="2"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 150)
+[node name="Line2D" parent="Stick3" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 80)
+default_color = Color(0.701961, 0.384314, 0.384314, 1)
 
 [node name="Obstacle" type="Node2D" parent="."]
 position = Vector2(-156, 1162)

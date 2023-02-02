@@ -92,7 +92,7 @@ func _process(delta: float) -> void:
 
 	for stick in all_sticks_in_root:
 		var stick_pos = get_stick_end_pos(stick)
-		var distance_to_points = stick_pos.distance_to(selected_stick.position)
+		var distance_to_points = stick_pos.distance_to(get_stick_start_pos(selected_stick))
 		draw_hints.clear_hint_point()
 		draw_hints.clear_stick()
 		show_hint_water(null)
@@ -161,7 +161,7 @@ func on_release_stick(id: int):
 
 	for stick in all_sticks_in_root:
 		var stick_pos = get_stick_end_pos(stick)
-		var distance_to_points = stick_pos.distance_to(selected_stick.position)
+		var distance_to_points = stick_pos.distance_to(get_stick_start_pos(selected_stick))
 		if distance_to_points > DISTANCE_TO_DETECT_POINTS:
 			continue
 
@@ -197,7 +197,7 @@ func on_release_stick(id: int):
 				release_stick_wrong()
 				return
 
-		set_sticks(stick, selected_stick, stick_pos)
+		set_sticks(stick, selected_stick)
 		return
 
 	release_stick_wrong()
@@ -214,6 +214,7 @@ func init_start_sticks():
 			continue
 
 		stick.is_connected_to_root = true
+		stick.line2d.default_color.a = 1.0
 		all_sticks_in_root.append(stick)
 
 		if is_lowest(stick):
@@ -237,16 +238,17 @@ func spawn_new_stick(pos) -> Stick:
 	new_stick.start_pos = pos
 	new_stick.position = pos
 	new_stick.show_card(true)
+	new_stick.play_spawn()
 	new_stick.id = available_id
 	available_id += 1
 	return new_stick
 
 
-func set_sticks(parent_stick: Stick, child_stick: Stick, parent_end_pos: Vector2):
+func set_sticks(parent_stick: Stick, child_stick: Stick):
 	parent_stick.stick_children.append(child_stick)
 	child_stick.stick_parent = parent_stick
 
-	child_stick.position = parent_end_pos
+	child_stick.position = get_stick_end_pos(parent_stick) - child_stick.line2d.position
 	child_stick.is_connected_to_root = true
 	all_sticks_in_root.append(child_stick)
 	dict_pos_and_stick.erase(child_stick.start_pos)
@@ -282,11 +284,11 @@ func is_lowest(stick: Stick) -> bool:
 
 
 func get_stick_start_pos(stick: Stick) -> Vector2:
-	return stick.position + stick.start_point
+	return stick.position + stick.line2d.position + stick.start_point
 
 
 func get_stick_end_pos(stick: Stick) -> Vector2:
-	return stick.position + stick.end_point
+	return stick.position + stick.line2d.position + stick.end_point
 
 
 func get_stick(id) -> Stick:
