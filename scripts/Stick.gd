@@ -2,6 +2,7 @@ class_name Stick
 extends Node2D
 
 @onready var sprite_card := $Sprite2DCard
+@onready var sprite_detal := $Sprite2DCard2
 
 @export var is_start_stick = false
 @export var line2d: Line2D
@@ -82,6 +83,7 @@ func show_card(show: bool):
 		return
 
 	sprite_card.visible = show
+	sprite_detal.visible = show
 	card_is_visible = show
 
 

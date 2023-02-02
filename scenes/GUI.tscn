@@ -40,6 +40,7 @@ offset_top = -400.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Point0" type="TextureRect" parent="HBoxContainer"]

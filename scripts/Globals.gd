@@ -2,8 +2,8 @@ class_name Globals
 extends Node
 
 
-const STICK_SIZE := 100
-const MAX_STICK_SIZE := 150
+const STICK_SIZE := 80
+const MAX_STICK_SIZE := 80
 
 const MAX_WATER := 100
 const PART_WATER := 25
