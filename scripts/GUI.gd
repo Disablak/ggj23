@@ -53,21 +53,20 @@ func on_moved_down():
 	water.visible = true
 
 
-func show_hint_water(cur_water: int, plus_water):
+func show_hint_water(cur_water: int, add_water: int):
 	label_water.label_settings.font_color = Color.WHITE
 
-	if plus_water == null:
+	if add_water == 0:
 		label_water.text = "{0}".format([cur_water])
 		return
 
-	if plus_water:
-		label_water.text = "{0} + {1}".format([cur_water, Global.PART_WATER])
+	if add_water > 0:
+		label_water.text = "{0} + {1}".format([cur_water, add_water])
 	else:
-		if cur_water - Global.PART_WATER == 0:
+		if cur_water + add_water <= 0:
 			label_water.label_settings.font_color = Color.RED
-			label_water.text = "{0} - {1}".format([cur_water, Global.PART_WATER])
-		else:
-			label_water.text = "{0} - {1}".format([cur_water, Global.PART_WATER])
+
+		label_water.text = "{0} - {1}".format([cur_water, abs(add_water)])
 
 
 func fade_show(show) -> Tween:

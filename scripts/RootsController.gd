@@ -95,7 +95,7 @@ func _process(delta: float) -> void:
 		var distance_to_points = stick_pos.distance_to(get_stick_start_pos(selected_stick))
 		draw_hints.clear_hint_point()
 		draw_hints.clear_stick()
-		show_hint_water(null)
+		show_hint_water(0)
 
 		if distance_to_points > DISTANCE_TO_DETECT_POINTS:
 			continue
@@ -112,9 +112,9 @@ func _process(delta: float) -> void:
 		draw_hints.draw_future_stick(future_stick_start, future_stick_end, Color.RED)
 
 		if future_stick_end.y > get_stick_end_pos(lowest_stick).y:
-			show_hint_water(false)
+			show_hint_water(-Globals.PART_WATER)
 		else:
-			show_hint_water(true)
+			show_hint_water(Globals.STICK_WATER * (stick.stick_children.size() + 1))
 
 		if stick.stick_children.size() >= MAX_STICK_CHILDREN:
 			return
@@ -167,8 +167,6 @@ func on_release_stick(id: int):
 
 		var dir = Vector2(cos(deg_to_rad(selected_stick.stick_angle)), sin(deg_to_rad(selected_stick.stick_angle)))
 		var future_size: int = selected_stick.stick_size
-		if lowest_stick == stick:
-			future_size *= float(cur_water) / 100
 
 		var future_stick_start = get_stick_end_pos(stick) + dir * (float(future_size) / 10)
 		var future_stick_end = get_stick_end_pos(stick) + dir * future_size
@@ -206,7 +204,7 @@ func on_release_stick(id: int):
 func release_stick_wrong():
 	draw_hints.clear_hint_point()
 	draw_hints.clear_stick()
-	show_hint_water(null)
+	show_hint_water(0)
 	on_wrong_release.emit(selected_stick)
 	cur_stick_id = -1
 
@@ -269,15 +267,11 @@ func set_sticks(parent_stick: Stick, child_stick: Stick):
 	all_sticks_in_root.append(child_stick)
 	dict_pos_and_stick.erase(child_stick.start_pos)
 
-	if lowest_stick == parent_stick:
-		var stick_size = float(cur_water) / 100
-		child_stick.change_size(stick_size)
-
 	if is_lowest(child_stick):
 		lowest_stick = child_stick
 		cur_water -= Global.PART_WATER
 	else:
-		cur_water += Global.PART_WATER
+		cur_water += Global.STICK_WATER * parent_stick.stick_children.size()
 
 	if is_stick_intersects_finish(child_stick):
 		Global.on_game_over.emit(true)
@@ -315,6 +309,6 @@ func get_stick(id) -> Stick:
 	return null
 
 
-func show_hint_water(plus_water):
-	Global.gui.show_hint_water(cur_water, plus_water)
+func show_hint_water(add_water: int):
+	Global.gui.show_hint_water(cur_water, add_water)
 
