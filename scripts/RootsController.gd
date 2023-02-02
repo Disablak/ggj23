@@ -95,6 +95,7 @@ func _process(delta: float) -> void:
 		var distance_to_points = stick_pos.distance_to(get_stick_start_pos(selected_stick))
 		draw_hints.clear_hint_point()
 		draw_hints.clear_stick()
+		draw_hints.clear_lower_line()
 		show_hint_water(null)
 
 		if distance_to_points > DISTANCE_TO_DETECT_POINTS:
@@ -113,6 +114,7 @@ func _process(delta: float) -> void:
 
 		if future_stick_end.y > get_stick_end_pos(lowest_stick).y:
 			show_hint_water(false)
+			draw_hints.draw_lower_line(future_stick_end.y)
 		else:
 			show_hint_water(true)
 
@@ -206,6 +208,7 @@ func on_release_stick(id: int):
 func release_stick_wrong():
 	draw_hints.clear_hint_point()
 	draw_hints.clear_stick()
+	draw_hints.clear_lower_line()
 	show_hint_water(null)
 	on_wrong_release.emit(selected_stick)
 	cur_stick_id = -1
@@ -285,6 +288,7 @@ func set_sticks(parent_stick: Stick, child_stick: Stick):
 
 	draw_hints.clear_hint_point()
 	draw_hints.clear_stick()
+	draw_hints.clear_lower_line()
 
 	try_to_spawn_new_sticks()
 
