@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://becqhgjieqv1x"]
+[gd_scene load_steps=5 format=3 uid="uid://becqhgjieqv1x"]
 
 [ext_resource type="Script" path="res://scripts/GUI.gd" id="1_ghebo"]
 [ext_resource type="Texture2D" uid="uid://dw68yyq7nyso0" path="res://assets/white.jpg" id="2_x6m6f"]
+[ext_resource type="Texture2D" uid="uid://bj5upwnu3em16" path="res://assets/Component 4.png" id="3_k8wh7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jrvaq"]
-font_size = 60
+font_size = 80
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -22,18 +23,6 @@ offset_left = 367.0
 offset_top = 302.0
 offset_right = 696.0
 offset_bottom = 676.0
-
-[node name="LabelWater" type="Label" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 173.0
-grow_horizontal = 2
-text = "WATER: 100"
-label_settings = SubResource("LabelSettings_jrvaq")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -78,3 +67,29 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Water" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 646.0
+offset_bottom = 169.0
+
+[node name="WaterIcon" type="TextureRect" parent="Water"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 12.0
+offset_right = 891.0
+offset_bottom = 1366.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_k8wh7")
+
+[node name="LabelWater" type="Label" parent="Water"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 118.0
+offset_bottom = 173.0
+grow_horizontal = 2
+pivot_offset = Vector2(2.08165e-12, 86)
+text = "100"
+label_settings = SubResource("LabelSettings_jrvaq")
+vertical_alignment = 1

@@ -29,8 +29,9 @@ var cur_stick_id: int = -1
 
 var cur_water: int = 100:
 	set(value):
+		var prev_value := cur_water
 		cur_water = clampi(value, 0, Global.MAX_WATER)
-		Global.on_updated_water.emit(cur_water)
+		Global.on_updated_water.emit(prev_value, cur_water)
 
 		if cur_water == 0:
 			Global.on_game_over.emit(false)

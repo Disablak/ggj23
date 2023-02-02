@@ -13,7 +13,7 @@ const CARD_STICK_POSES: Array[Vector2] = [
 	Vector2(600, 500), Vector2(800, 500)
 ]
 
-signal on_updated_water(new_value: int)
+signal on_updated_water(prev_value:int, new_value: int)
 signal on_game_over(is_win: bool)
 signal on_card_move_back(stick: Stick)
 

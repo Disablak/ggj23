@@ -3,7 +3,8 @@ extends Control
 
 
 @onready var btn_start: Button = $ButtonStart
-@onready var label_water: Label = $LabelWater
+@onready var water: Control = $Water
+@onready var label_water: Label = $Water/LabelWater
 @onready var box_container: HBoxContainer = $HBoxContainer
 @onready var fade: ColorRect = $Fade
 
@@ -16,6 +17,7 @@ func _ready() -> void:
 
 	Global.on_updated_water.connect(_on_updated_water)
 
+	water.visible = false
 	fade.visible = true
 
 	await get_tree().process_frame
@@ -25,19 +27,21 @@ func _ready() -> void:
 		child.visible = false
 
 
-func _on_updated_water(value: int):
+func _on_updated_water(prev_value: int, cur_value: int):
+	if prev_value == cur_value:
+		return
+
 	var tween = create_tween()
-	var start_value = label_water.text.split(':')[1].to_int()
 	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_method(set_label_water_text, start_value,
-		value, LABEL_WATER_TWEEN_DURATION)
-	tween.tween_property(label_water, "scale", 
-		Vector2(1.1, 1.1), 0.2).from(Vector2.ONE)
-	tween.tween_property(label_water, "scale", 
+	tween.tween_method(set_label_water_text, prev_value,
+		cur_value, LABEL_WATER_TWEEN_DURATION)
+	tween.tween_property(label_water, "scale",
+		Vector2(1.2, 1.2), 0.2).from(Vector2.ONE)
+	tween.tween_property(label_water, "scale",
 		Vector2.ONE, 0.2)
 
 func set_label_water_text(value: int):
-	label_water.text = "WATER: {0}".format([value])
+	label_water.text = "{0}".format([value])
 
 
 func on_start_move_down():
@@ -45,23 +49,24 @@ func on_start_move_down():
 
 
 func on_moved_down():
-	label_water.visible = true
+	water.visible = true
+
 
 func show_hint_water(cur_water: int, plus_water):
 	label_water.label_settings.font_color = Color.WHITE
 
 	if plus_water == null:
-		_on_updated_water(cur_water)
+		label_water.text = "{0}".format([cur_water])
 		return
 
 	if plus_water:
-		label_water.text = "WATER: {0} + {1}".format([cur_water, Global.PART_WATER])
+		label_water.text = "{0} + {1}".format([cur_water, Global.PART_WATER])
 	else:
 		if cur_water - Global.PART_WATER == 0:
 			label_water.label_settings.font_color = Color.RED
-			label_water.text = "WATER: {0} - {1}".format([cur_water, Global.PART_WATER])
+			label_water.text = "{0} - {1}".format([cur_water, Global.PART_WATER])
 		else:
-			label_water.text = "WATER: {0} - {1}".format([cur_water, Global.PART_WATER])
+			label_water.text = "{0} - {1}".format([cur_water, Global.PART_WATER])
 
 
 func fade_show(show) -> Tween:
