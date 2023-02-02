@@ -18,6 +18,13 @@ levels = Array[PackedScene]([ExtResource("2_s1o58"), ExtResource("3_5cek2"), Ext
 offset_right = 1080.0
 offset_bottom = 1920.0
 
+[node name="LabelTitle" parent="GUI" index="4"]
+offset_left = 112.0
+offset_top = -366.0
+offset_right = 963.0
+offset_bottom = -112.0
+text = "R.O.O.T.S."
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2.08165e-12, -800)
 offset = Vector2(540, 960)
