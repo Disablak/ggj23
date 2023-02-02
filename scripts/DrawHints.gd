@@ -7,6 +7,7 @@ var hint_pos: Vector2 = Vector2(-100, -100)
 var future_stick_start: Vector2
 var future_stick_end: Vector2
 var future_stick_color: Color
+var lower_line_y: int = -100
 
 
 func draw_hint(pos: Vector2, color: Color):
@@ -20,6 +21,14 @@ func draw_future_stick(start: Vector2, end: Vector2, color: Color):
 	future_stick_end = end
 	future_stick_color = color
 	queue_redraw()
+
+
+func draw_lower_line(y: int):
+	lower_line_y = y
+
+
+func clear_lower_line():
+	lower_line_y = -100
 
 
 func clear_hint_point():
@@ -36,3 +45,4 @@ func clear_stick():
 func _draw() -> void:
 	draw_circle(hint_pos, 15, hint_color)
 	draw_line(future_stick_start, future_stick_end, future_stick_color, 10)
+	draw_line(Vector2(-200, lower_line_y), Vector2(2000, lower_line_y), Color.WHITE)
