@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bmcsnc8is2ew7"]
 
 [ext_resource type="Script" path="res://scripts/Stick.gd" id="1_m0ylu"]
-[ext_resource type="Texture2D" uid="uid://crj8rleudh0tf" path="res://assets/Component 3.png" id="2_lf8p7"]
-[ext_resource type="Texture2D" uid="uid://y8rwmceoiwlg" path="res://assets/Component 2.png" id="3_qjxy3"]
+[ext_resource type="Texture2D" uid="uid://ckeandmkwqph4" path="res://assets/Component 3 (1).png" id="2_vs48u"]
+[ext_resource type="Texture2D" uid="uid://dihaunk8toei1" path="res://assets/Component.png" id="3_ehgdg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1r28"]
 size = Vector2(180, 300)
@@ -55,116 +55,6 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2DCard:self_modulate:r")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2DCard:self_modulate:g")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Sprite2DCard:self_modulate:b")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Sprite2DCard:self_modulate:a")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.509804, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Sprite2DCard2:self_modulate:r")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Sprite2DCard2:self_modulate:g")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Sprite2DCard2:self_modulate:b")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/11/type = "bezier"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Line2D:default_color:r")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.701961, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/12/type = "bezier"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Line2D:default_color:g")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.384314, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/13/type = "bezier"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Line2D:default_color:b")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.384314, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -388,16 +278,16 @@ line2d = NodePath("Line2D")
 metadata/_edit_group_ = true
 
 [node name="Sprite2DCard" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.509804)
+self_modulate = Color(0.92549, 0.796078, 0.533333, 1)
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(1e-05, 0.24)
-texture = ExtResource("2_lf8p7")
+texture = ExtResource("2_vs48u")
 
 [node name="Sprite2DCard2" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.988235, 0.921569, 0.8, 0)
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_qjxy3")
+texture = ExtResource("3_ehgdg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
