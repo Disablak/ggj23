@@ -65,8 +65,8 @@ func move_front(front: bool):
 	z_index = 1 if front else 0
 
 
-func random_generade():
-	var random_angle: int = Global.STICK_ANGLES_VARIANTS.pick_random()
+func random_generade(angle_preset: int):
+	var random_angle: int = Global.STICK_ANGLES_VARIANTS.pick_random() if angle_preset == -1 else angle_preset
 	var random_size: int = randi_range(Global.STICK_SIZE, Global.MAX_STICK_SIZE)
 	var end_point: Vector2 = Vector2(cos(deg_to_rad(random_angle)), sin(deg_to_rad(random_angle))) * random_size
 

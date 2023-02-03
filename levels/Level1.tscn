@@ -1,9 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf3judo7gtoat"]
 
-[ext_resource type="PackedScene" uid="uid://b3vo7or8n5ot5" path="res://levels/LevelBase.tscn" id="1_xvv0e"]
+[ext_resource type="PackedScene" uid="uid://dqip1rqf4uu1v" path="res://levels/LevelBase.tscn" id="1_xvv0e"]
 [ext_resource type="PackedScene" uid="uid://bv6lfet11yn0t" path="res://scenes/StartStick.tscn" id="2_ok2uy"]
 
 [node name="Level" instance=ExtResource("1_xvv0e")]
+count_variant = 1
+tutorial_card_angles = Array[int]([90, 90])
 
 [node name="Line2D" parent="Stick3" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, -18, 88)

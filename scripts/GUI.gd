@@ -91,3 +91,23 @@ func fade_show(show) -> Tween:
 	tween.tween_property(fade, "color", color_to, FADE_TIME)
 
 	return tween
+
+
+func update_card_pos(count: int):
+	for child in box_container.get_children():
+		child.visible = false
+
+	Global.card_points.clear()
+
+	for id in count:
+		var child = box_container.get_child(id)
+		child.visible = true
+
+	await get_tree().process_frame
+
+	for id in count:
+		var child = box_container.get_child(id)
+		var pos = child.global_position + child.size / 2
+		Global.card_points.append(pos)
+		child.visible = false
+

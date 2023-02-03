@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://qeida55001id" path="res://assets/medium_test2_plant.png" id="3_4n16j"]
 [ext_resource type="Texture2D" uid="uid://dh35m428vp6uh" path="res://assets/background_plant.png" id="4_6pvtt"]
 [ext_resource type="Texture2D" uid="uid://rda4ekuesgo3" path="res://assets/mini_test2_plant.png" id="4_iwk58"]
-[ext_resource type="Texture2D" uid="uid://bkv6inmu26kki" path="res://assets/white_box.png" id="5_qjhwe"]
 [ext_resource type="Texture2D" uid="uid://smcfor8w7pa2" path="res://assets/grass.png" id="6_0xb24"]
+[ext_resource type="Texture2D" uid="uid://bo88ghnuxulv1" path="res://assets/ground_texture.png" id="8_ulieb"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_8leeb")
@@ -57,11 +57,10 @@ scale = Vector2(0.4, 0.364)
 texture = ExtResource("4_6pvtt")
 
 [node name="Ground" type="Sprite2D" parent="."]
-self_modulate = Color(0.239216, 0.239216, 0.239216, 1)
 z_index = -1
-position = Vector2(536.5, 1640.61)
-scale = Vector2(40, 60.6495)
-texture = ExtResource("5_qjhwe")
+position = Vector2(536.5, 1696)
+scale = Vector2(2, 2)
+texture = ExtResource("8_ulieb")
 
 [node name="Grass" type="Sprite2D" parent="."]
 z_index = -2

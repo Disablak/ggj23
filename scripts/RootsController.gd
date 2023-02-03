@@ -54,6 +54,9 @@ func init_game(level: Level):
 	init_start_sticks()
 	find_all_obstacles()
 
+	sticks_count_variant = level.count_variant
+	Global.gui.update_card_pos(sticks_count_variant)
+
 	lower_edge_start = level.line_lower_edge.get_point_position(0)
 	lower_edge_end = level.line_lower_edge.get_point_position(1)
 
@@ -81,6 +84,7 @@ func deinit_game():
 
 func on_moved_down():
 	level.line_lower_edge.visible = true
+	await get_tree().process_frame
 	try_to_spawn_new_sticks()
 
 
@@ -243,7 +247,8 @@ func init_start_sticks():
 
 
 func try_to_spawn_new_sticks():
-	for pos in Global.card_points:
+	for id in sticks_count_variant:
+		var pos = Global.card_points[id]
 		if dict_pos_and_stick.has(pos):
 			continue
 
@@ -255,7 +260,7 @@ func spawn_new_stick(pos) -> Stick:
 	level.add_child(new_stick)
 	dict_pos_and_stick[pos] = new_stick
 
-	new_stick.random_generade()
+	new_stick.random_generade(level.try_get_tutorial_card())
 	new_stick.start_pos = pos
 	new_stick.position = pos
 	new_stick.show_card(true)
