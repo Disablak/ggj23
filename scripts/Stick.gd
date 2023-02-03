@@ -112,7 +112,6 @@ func play_change_end_width():
 
 func _tween_width(val):
 	line2d.width_curve.set_point_value(1, val)
-	print(line2d.width_curve.get_point_position(1))
 
 
 func tween_end_point(pos: Vector2):

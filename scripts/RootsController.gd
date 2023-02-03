@@ -281,6 +281,7 @@ func set_sticks(parent_stick: Stick, child_stick: Stick):
 	draw_hints.clear_hint_point()
 	draw_hints.clear_stick()
 	draw_hints.clear_lower_line()
+	show_hint_water(0)
 
 	try_to_spawn_new_sticks()
 	parent_stick.play_change_end_width()
