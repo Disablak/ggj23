@@ -33,11 +33,15 @@ func play_tween_change_sprite(texture: Texture2D):
 	if plant_sprite.texture == texture:
 		return
 
+	plant_sprite.use_parent_material = true
+
 	var tween = create_tween()
 	tween.tween_property(plant_sprite, "self_modulate:a", 0.0, 0.5).from(1.0)
 	tween.tween_property(plant_sprite, "self_modulate:a", 1.0, 0.5).from(0.0)
 	await tween.step_finished
 	plant_sprite.texture = texture
+	await tween.step_finished
+	plant_sprite.use_parent_material = false
 
 
 func try_get_tutorial_card() -> int:

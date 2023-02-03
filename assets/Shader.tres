@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c0f2j4uqadriy"]
+
+[ext_resource type="Shader" path="res://scripts/Deformation.gdshader" id="1_wp73r"]
+
+[resource]
+shader = ExtResource("1_wp73r")
+shader_parameter/Smooth = true
+shader_parameter/width = 1.0
+shader_parameter/outline_color = Color(1, 0.368627, 1, 1)
+shader_parameter/pixel_size = 4
+shader_parameter/width_speed = 1.0
