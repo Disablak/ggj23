@@ -301,6 +301,7 @@ width = 15.0
 width_curve = SubResource("Curve_r2uxl")
 default_color = Color(0.701961, 0.384314, 0.384314, 1)
 begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -103,8 +103,6 @@ func _process(delta: float) -> void:
 
 		var dir = Vector2(cos(deg_to_rad(selected_stick.stick_angle)), sin(deg_to_rad(selected_stick.stick_angle)))
 		var future_size: int = selected_stick.stick_size
-		if lowest_stick == stick:
-			future_size *= float(cur_water) / 100
 
 		var future_stick_start = get_stick_end_pos(stick) + dir * (float(future_size) / 10)
 		var future_stick_end = get_stick_end_pos(stick) + dir * future_size
@@ -285,6 +283,8 @@ func set_sticks(parent_stick: Stick, child_stick: Stick):
 	draw_hints.clear_lower_line()
 
 	try_to_spawn_new_sticks()
+	parent_stick.play_change_end_width()
+	child_stick.play_grow()
 
 	cur_stick_id = -1
 

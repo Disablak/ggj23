@@ -33,6 +33,8 @@ var stick_children: Array[Stick]
 func _ready() -> void:
 	Global.on_card_move_back.connect(_on_card_move_back)
 
+	line2d.width_curve = line2d.width_curve.duplicate()
+
 	start_point = line2d.points[0]
 	end_point = line2d.points[1]
 	stick_vector = start_point.direction_to(end_point)
@@ -92,8 +94,29 @@ func play_spawn():
 	animation_player.play("spawn")
 
 
-func play_idle():
-	animation_player.play("idle")
+func play_grow():
+	var tween = create_tween()
+	var end_pos := line2d.get_point_position(1)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_method(tween_end_point, line2d.get_point_position(0), end_pos, 1.0)
+
+
+func play_change_end_width():
+	if line2d.width_curve.get_point_position(1).y == 0.5:
+		return
+
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_method(_tween_width, 0.1, 0.6, 1.0)
+
+
+func _tween_width(val):
+	line2d.width_curve.set_point_value(1, val)
+	print(line2d.width_curve.get_point_position(1))
+
+
+func tween_end_point(pos: Vector2):
+	line2d.set_point_position(1, pos)
 
 
 func _set_end_point(point: Vector2):
