@@ -269,6 +269,7 @@ func set_sticks(parent_stick: Stick, child_stick: Stick):
 	dict_pos_and_stick.erase(child_stick.start_pos)
 
 	if is_lowest(child_stick):
+		level.update_plant_sprite(get_stick_end_pos(child_stick).y)
 		lowest_stick = child_stick
 		cur_water -= Global.PART_WATER
 	else:
@@ -284,6 +285,7 @@ func set_sticks(parent_stick: Stick, child_stick: Stick):
 	show_hint_water(0)
 
 	try_to_spawn_new_sticks()
+
 	parent_stick.play_change_end_width()
 	child_stick.play_grow()
 

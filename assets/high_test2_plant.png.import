@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxigrx7vqvhnc"
-path="res://.godot/imported/test2_plant.png-175b5ea8a0d4557c033d140aaebf48d7.ctex"
+uid="uid://byf5dtjjm8ho3"
+path="res://.godot/imported/high_test2_plant.png-32dfc12d08558e92347aba3eb0b50fd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/test2_plant.png"
-dest_files=["res://.godot/imported/test2_plant.png-175b5ea8a0d4557c033d140aaebf48d7.ctex"]
+source_file="res://assets/high_test2_plant.png"
+dest_files=["res://.godot/imported/high_test2_plant.png-32dfc12d08558e92347aba3eb0b50fd6.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

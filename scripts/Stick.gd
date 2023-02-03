@@ -102,7 +102,7 @@ func play_grow():
 
 
 func play_change_end_width():
-	if line2d.width_curve.get_point_position(1).y == 0.5:
+	if line2d.width_curve.get_point_position(1).y >= 0.5:
 		return
 
 	var tween = create_tween()

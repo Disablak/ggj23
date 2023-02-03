@@ -1,15 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3vo7or8n5ot5"]
+[gd_scene load_steps=10 format=3 uid="uid://dqip1rqf4uu1v"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_8leeb"]
 [ext_resource type="PackedScene" uid="uid://bmcsnc8is2ew7" path="res://scenes/Stick.tscn" id="1_jo4in"]
+[ext_resource type="Texture2D" uid="uid://byf5dtjjm8ho3" path="res://assets/high_test2_plant.png" id="2_gkm1m"]
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="2_n0qyq"]
+[ext_resource type="Texture2D" uid="uid://qeida55001id" path="res://assets/medium_test2_plant.png" id="3_4n16j"]
 [ext_resource type="Texture2D" uid="uid://dh35m428vp6uh" path="res://assets/background_plant.png" id="4_6pvtt"]
+[ext_resource type="Texture2D" uid="uid://rda4ekuesgo3" path="res://assets/mini_test2_plant.png" id="4_iwk58"]
 [ext_resource type="Texture2D" uid="uid://bkv6inmu26kki" path="res://assets/white_box.png" id="5_qjhwe"]
 [ext_resource type="Texture2D" uid="uid://smcfor8w7pa2" path="res://assets/grass.png" id="6_0xb24"]
-[ext_resource type="Texture2D" uid="uid://cxigrx7vqvhnc" path="res://assets/test2_plant.png" id="6_36brk"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_8leeb")
+HIGH_SPRITE = ExtResource("2_gkm1m")
+MEDIUM_SPRITE = ExtResource("3_4n16j")
+LOW_SPRITE = ExtResource("4_iwk58")
 
 [node name="Stick" parent="." instance=ExtResource("1_jo4in")]
 position = Vector2(533, 700)
@@ -17,7 +22,6 @@ is_start_stick = true
 
 [node name="Line2D" parent="Stick" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 50, 50)
-default_color = Color(0.701961, 0.384314, 0.384314, 1)
 
 [node name="Stick2" parent="." instance=ExtResource("1_jo4in")]
 position = Vector2(533, 700)
@@ -25,7 +29,6 @@ is_start_stick = true
 
 [node name="Line2D" parent="Stick2" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, -50, 50)
-default_color = Color(0.701961, 0.384314, 0.384314, 1)
 
 [node name="Stick3" parent="." instance=ExtResource("1_jo4in")]
 position = Vector2(533, 700)
@@ -33,7 +36,6 @@ is_start_stick = true
 
 [node name="Line2D" parent="Stick3" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 80)
-default_color = Color(0.701961, 0.384314, 0.384314, 1)
 
 [node name="Obstacle" type="Node2D" parent="."]
 position = Vector2(-156, 1162)
@@ -50,7 +52,7 @@ default_color = Color(0.513726, 0.513726, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -5
-position = Vector2(545, 80)
+position = Vector2(535, 81)
 scale = Vector2(0.4, 0.364)
 texture = ExtResource("4_6pvtt")
 
@@ -68,9 +70,9 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_0xb24")
 
 [node name="Plant" type="Sprite2D" parent="."]
-position = Vector2(555, 424)
+position = Vector2(551, 421)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("6_36brk")
+texture = ExtResource("4_iwk58")
 
 [editable path="Stick"]
 [editable path="Stick2"]
