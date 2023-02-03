@@ -57,6 +57,7 @@ func _on_game_over(is_win: bool):
 
 func next_level():
 	level_id += 1
+	Global.on_changed_level.emit(level_id)
 
 	if level_id >= levels.size():
 		print("All levels completed")

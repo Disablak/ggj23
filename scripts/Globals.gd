@@ -17,6 +17,8 @@ const CARD_STICK_POSES: Array[Vector2] = [
 signal on_updated_water(prev_value:int, new_value: int)
 signal on_game_over(is_win: bool)
 signal on_card_move_back(stick: Stick)
+signal on_changed_level(id: int)
+signal on_changed_score(score: int)
 
 var root_controller: RootController
 var visual_effects: VisualEffects

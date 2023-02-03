@@ -5,6 +5,8 @@ extends Control
 @onready var btn_start: Button = $ButtonStart
 @onready var water: Control = $Water
 @onready var label_water: Label = $Water/LabelWater
+@onready var label_score: Label = $LabelScore
+@onready var label_lvl: Label = $LabelLvl
 @onready var box_container: HBoxContainer = $HBoxContainer
 @onready var fade: ColorRect = $Fade
 
@@ -16,15 +18,27 @@ func _ready() -> void:
 	Global.gui = self
 
 	Global.on_updated_water.connect(_on_updated_water)
+	Global.on_changed_level.connect(_on_changed_level)
+	Global.on_changed_score.connect(_on_changed_score)
 
 	water.visible = false
 	fade.visible = true
+	label_score.visible = false
+	label_lvl.visible = false
 
 	await get_tree().process_frame
 	for child in box_container.get_children():
 		var pos = child.global_position + child.size / 2
 		Global.card_points.append(pos)
 		child.visible = false
+
+
+func _on_changed_level(id: int):
+	label_lvl.text = "L{0}".format([id])
+
+
+func _on_changed_score(score: int):
+	label_score.text = "S{0}".format([score])
 
 
 func _on_updated_water(prev_value: int, cur_value: int):
@@ -51,6 +65,8 @@ func on_start_move_down():
 
 func on_moved_down():
 	water.visible = true
+	label_lvl.visible = true
+	label_score.visible = true
 
 
 func show_hint_water(cur_water: int, add_water: int):

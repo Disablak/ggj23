@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://becqhgjieqv1x"]
+[gd_scene load_steps=8 format=3 uid="uid://becqhgjieqv1x"]
 
 [ext_resource type="Script" path="res://scripts/GUI.gd" id="1_ghebo"]
 [ext_resource type="Texture2D" uid="uid://dw68yyq7nyso0" path="res://assets/white.jpg" id="2_x6m6f"]
@@ -12,6 +12,10 @@ font_size = 100
 [sub_resource type="LabelSettings" id="LabelSettings_85v8e"]
 font = ExtResource("4_2n41u")
 font_size = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_7myy6"]
+font = ExtResource("4_2n41u")
+font_size = 70
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -111,3 +115,34 @@ offset_right = 845.0
 offset_bottom = -684.0
 text = "ROOTS"
 label_settings = SubResource("LabelSettings_85v8e")
+
+[node name="LabelLvl" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 206.0
+grow_horizontal = 0
+pivot_offset = Vector2(2.08165e-12, 86)
+text = "L1
+"
+label_settings = SubResource("LabelSettings_7myy6")
+horizontal_alignment = 2
+
+[node name="LabelScore" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 89.0
+offset_right = -20.0
+offset_bottom = 180.0
+grow_horizontal = 0
+pivot_offset = Vector2(2.08165e-12, 86)
+text = "S0"
+label_settings = SubResource("LabelSettings_7myy6")
+horizontal_alignment = 2

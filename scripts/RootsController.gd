@@ -26,6 +26,11 @@ var obstacles: Array[Obstacle]
 var available_id: int = 0
 var cur_stick_id: int = -1
 
+var cur_score: int = 0:
+	set(value):
+		cur_score = value
+		Global.on_changed_score.emit(cur_score)
+
 
 var cur_water: int = 100:
 	set(value):
@@ -53,6 +58,7 @@ func init_game(level: Level):
 	lower_edge_end = level.line_lower_edge.get_point_position(1)
 
 	cur_water = 100
+	cur_score = 0
 
 
 func deinit_game():
@@ -267,6 +273,8 @@ func set_sticks(parent_stick: Stick, child_stick: Stick):
 	child_stick.is_connected_to_root = true
 	all_sticks_in_root.append(child_stick)
 	dict_pos_and_stick.erase(child_stick.start_pos)
+
+	cur_score += 1
 
 	if is_lowest(child_stick):
 		level.update_plant_sprite(get_stick_end_pos(child_stick).y)
