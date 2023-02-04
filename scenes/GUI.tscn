@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://becqhgjieqv1x"]
+[gd_scene load_steps=10 format=3 uid="uid://becqhgjieqv1x"]
 
 [ext_resource type="Script" path="res://scripts/GUI.gd" id="1_ghebo"]
+[ext_resource type="Material" uid="uid://c0f2j4uqadriy" path="res://assets/Shader.tres" id="2_fem4m"]
 [ext_resource type="Texture2D" uid="uid://dw68yyq7nyso0" path="res://assets/white.jpg" id="2_x6m6f"]
 [ext_resource type="Texture2D" uid="uid://bj5upwnu3em16" path="res://assets/Component 4.png" id="3_k8wh7"]
+[ext_resource type="Texture2D" uid="uid://ca4dceibtgf3a" path="res://assets/btn start plant.png" id="3_vnt5i"]
 [ext_resource type="FontFile" uid="uid://lc87qq27q66j" path="res://assets/Buda-Light.ttf" id="4_2n41u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jrvaq"]
@@ -28,11 +30,23 @@ mouse_filter = 1
 script = ExtResource("1_ghebo")
 
 [node name="ButtonStart" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 367.0
-offset_top = 302.0
+offset_top = 198.0
 offset_right = 696.0
 offset_bottom = 676.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("2_fem4m")
+layout_mode = 2
+offset_left = 362.0
+offset_top = 186.0
+offset_right = 1589.0
+offset_bottom = 1843.0
+scale = Vector2(0.3, 0.3)
+mouse_filter = 2
+texture = ExtResource("3_vnt5i")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

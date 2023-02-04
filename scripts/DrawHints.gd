@@ -7,7 +7,7 @@ var hint_pos: Vector2 = Vector2(-100, -100)
 var future_stick_start: Vector2
 var future_stick_end: Vector2
 var future_stick_color: Color
-var lower_line_y: int = -100
+var lower_line_y: int = -1000
 
 
 func draw_hint(pos: Vector2, color: Color):
@@ -28,7 +28,7 @@ func draw_lower_line(y: int):
 
 
 func clear_lower_line():
-	lower_line_y = -100
+	lower_line_y = -1000
 
 
 func clear_hint_point():

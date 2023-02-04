@@ -3,6 +3,7 @@ extends Control
 
 
 @onready var btn_start: Button = $ButtonStart
+@onready var btn_sprite: TextureRect = $TextureRect
 @onready var water: Control = $Water
 @onready var label_water: Label = $Water/LabelWater
 @onready var label_score: Label = $LabelScore
@@ -61,6 +62,12 @@ func set_label_water_text(value: int):
 
 func on_start_move_down():
 	btn_start.visible = false
+
+	btn_sprite.use_parent_material = true
+	var tween_alpha = create_tween()
+	tween_alpha.tween_property(btn_sprite, "self_modulate:a", 0.0, 0.5)
+#	await tween_alpha.finished
+#	btn_sprite.visible = false
 
 
 func on_moved_down():
