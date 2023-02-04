@@ -6,4 +6,5 @@
 position = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Line2D" parent="." index="0"]
+visible = false
 points = PackedVector2Array(-48, -98, 67, -16, 59, 90, -3, 98, -55, 60, -77, 10, -56, -95)

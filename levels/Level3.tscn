@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bih7q4qe873ha" path="res://scenes/obstacles/obs_rock_mini.tscn" id="3_0edwp"]
 
 [node name="Level" instance=ExtResource("1_gursp")]
+count_variant = 3
 
 [node name="Line2D" parent="Stick" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 42, 60)
@@ -37,7 +38,7 @@ position = Vector2(524, 784)
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, -48, 13)
 
 [node name="Obstacle" parent="." index="11" instance=ExtResource("3_0edwp")]
-position = Vector2(417, 864)
+position = Vector2(393, 910)
 
 [editable path="Stick"]
 [editable path="Stick2"]

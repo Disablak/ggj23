@@ -6,8 +6,9 @@
 [node name="Obstacle" instance=ExtResource("1_k0kc3")]
 
 [node name="Line2D" parent="." index="0"]
-points = PackedVector2Array(67, -38, 54, 38, 27, 87, -32, 87, -65, 40, -70, -42, 1, -87, 63, -44)
+points = PackedVector2Array(67, -38, 54, 38, 27, 87, -32, 87, -65, 40, -64, -63, 1, -87, 68, -52, 62, -44, 1, -68, -55, -51, -53, 33, -24, 73, 16, 74, 44, 36, 43, -35)
 
 [node name="Sprite2D" parent="." index="1"]
+rotation = 0.167552
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_y6ct4")

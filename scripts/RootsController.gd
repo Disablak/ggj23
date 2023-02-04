@@ -34,6 +34,9 @@ var cur_score: int = 0:
 
 var cur_water: int = 100:
 	set(value):
+		if Global.DEBUG:
+			return
+
 		var prev_value := cur_water
 		cur_water = clampi(value, 0, Global.MAX_WATER)
 		Global.on_updated_water.emit(prev_value, cur_water)
@@ -90,7 +93,7 @@ func on_moved_down():
 
 
 func find_all_obstacles():
-	for child in get_children():
+	for child in level.get_children():
 		if child is Obstacle:
 			obstacles.append(child)
 
@@ -120,7 +123,7 @@ func _process(delta: float) -> void:
 
 		draw_hints.draw_hint(stick_pos, Color.RED)
 		draw_hints.draw_future_stick(future_stick_start, future_stick_end, Color.RED)
-		
+
 		selected_stick.line2d.visible = false
 
 		if future_stick_end.y > get_stick_end_pos(lowest_stick).y:
@@ -172,9 +175,9 @@ func on_start_drag_stick(id: int):
 func on_release_stick(id: int):
 	if cur_stick_id == -1:
 		return
-		
+
 	selected_stick.line2d.visible = true
-	
+
 	for stick in all_sticks_in_root:
 		var stick_pos = get_stick_end_pos(stick)
 		var distance_to_points = stick_pos.distance_to(get_stick_start_pos(selected_stick))

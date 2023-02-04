@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmyhlhf3dtbva"]
+
+[ext_resource type="PackedScene" uid="uid://dqip1rqf4uu1v" path="res://levels/LevelBase.tscn" id="1_pgu72"]
+[ext_resource type="PackedScene" uid="uid://b3pvxu7rchdmk" path="res://scenes/obstacles/obstacle_scull.tscn" id="2_kwimj"]
+
+[node name="Level" instance=ExtResource("1_pgu72")]
+
+[node name="LowerEdge" parent="." index="3"]
+points = PackedVector2Array(-200, 1100, 1200, 1100)
+
+[node name="Obstacle" parent="." index="8" instance=ExtResource("2_kwimj")]
+position = Vector2(535, 982)
+
+[editable path="Stick"]
+[editable path="Stick2"]
+[editable path="Stick3"]

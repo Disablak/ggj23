@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://hsqh71mwy6rv"]
+
+[ext_resource type="PackedScene" uid="uid://dqip1rqf4uu1v" path="res://levels/LevelBase.tscn" id="1_185xx"]
+[ext_resource type="PackedScene" uid="uid://ron7fitmbec7" path="res://scenes/obstacles/obs_murashnik.tscn" id="2_pwji0"]
+[ext_resource type="PackedScene" uid="uid://010iiba8ptlk" path="res://scenes/obstacles/obs_rock_mini4.tscn" id="3_h3yet"]
+[ext_resource type="PackedScene" uid="uid://buvqpsva2ldrj" path="res://scenes/obstacles/obs_rock_mini2.tscn" id="4_e3e3g"]
+
+[node name="Level" instance=ExtResource("1_185xx")]
+
+[node name="LowerEdge" parent="." index="3"]
+points = PackedVector2Array(-200, 1300, 1200, 1300)
+
+[node name="Obstacle" parent="." index="8" instance=ExtResource("2_pwji0")]
+position = Vector2(558, 1023)
+
+[node name="Obstacle2" parent="." index="9" instance=ExtResource("3_h3yet")]
+position = Vector2(902, 1132)
+
+[node name="Obstacle3" parent="." index="10" instance=ExtResource("4_e3e3g")]
+position = Vector2(329, 1228)
+
+[editable path="Stick"]
+[editable path="Stick2"]
+[editable path="Stick3"]

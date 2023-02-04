@@ -21,6 +21,7 @@ func start_pulse_animation():
 	tween.tween_property(line_lower_edge, "default_color:a", 1, 3)
 	tween.tween_property(line_lower_edge, "default_color:a", 0, 3)
 
+
 func update_plant_sprite(lower_stick_y: int):
 	var finish_y := line_lower_edge.get_point_position(0).y
 	var total_height := finish_y - GROUND_START_Y
