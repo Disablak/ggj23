@@ -11,6 +11,8 @@ extends Control
 @onready var box_container: HBoxContainer = $HBoxContainer
 @onready var fade: ColorRect = $Fade
 
+var change_score_tween : Tween
+
 const FADE_TIME := 1
 const LABEL_WATER_TWEEN_DURATION := 1
 const MAX_WATER_VALUE := 100
@@ -47,13 +49,13 @@ func _on_updated_water(prev_value: int, cur_value: int):
 	if prev_value == cur_value:
 		return
 
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_method(set_label_water_text, prev_value,
+	change_score_tween = create_tween()
+	change_score_tween.set_trans(Tween.TRANS_SINE)
+	change_score_tween.tween_method(set_label_water_text, prev_value,
 		cur_value, LABEL_WATER_TWEEN_DURATION)
-	tween.tween_property(label_water, "scale",
+	change_score_tween.tween_property(label_water, "scale",
 		Vector2(1.2, 1.2), 0.2).from(Vector2.ONE)
-	tween.tween_property(label_water, "scale",
+	change_score_tween.tween_property(label_water, "scale",
 		Vector2.ONE, 0.2)
 
 func set_label_water_text(value: int):
