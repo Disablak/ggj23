@@ -5,54 +5,30 @@
 
 [node name="Level" instance=ExtResource("1_xvv0e")]
 count_variant = 1
-tutorial_card_angles = Array[int]([90, 90])
+tutorial_card_angles = Array[int]([90, 110, 70, 90, 110, 70])
 
 [node name="Line2D" parent="Stick3" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, -18, 88)
 
 [node name="LowerEdge" parent="." index="4"]
-points = PackedVector2Array(-200, 1100, 1200, 1100)
+points = PackedVector2Array(-200, 900, 1200, 900)
 
 [node name="Stick4" parent="." index="9" instance=ExtResource("2_ok2uy")]
 position = Vector2(588, 753)
 
 [node name="Line2D" parent="Stick4" index="3"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 36, 57)
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 49, 56)
 width = 20.0
 
-[node name="Stick5" parent="." index="10" instance=ExtResource("2_ok2uy")]
-position = Vector2(622, 810)
-
-[node name="Line2D" parent="Stick5" index="3"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 36, 40)
-width = 20.0
-
-[node name="Stick6" parent="." index="11" instance=ExtResource("2_ok2uy")]
-position = Vector2(622, 810)
-
-[node name="Line2D" parent="Stick6" index="3"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, -28, 51)
-width = 20.0
-
-[node name="Stick7" parent="." index="12" instance=ExtResource("2_ok2uy")]
+[node name="Stick7" parent="." index="10" instance=ExtResource("2_ok2uy")]
 position = Vector2(586, 752)
 
 [node name="Line2D" parent="Stick7" index="3"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, -35, 34)
-width = 20.0
-
-[node name="Stick8" parent="." index="13" instance=ExtResource("2_ok2uy")]
-position = Vector2(586, 752)
-
-[node name="Line2D" parent="Stick8" index="3"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 5, 55)
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -58, 52)
 width = 20.0
 
 [editable path="Stick"]
 [editable path="Stick2"]
 [editable path="Stick3"]
 [editable path="Stick4"]
-[editable path="Stick5"]
-[editable path="Stick6"]
 [editable path="Stick7"]
-[editable path="Stick8"]

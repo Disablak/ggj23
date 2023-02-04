@@ -1,13 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://bppntwk0041qs"]
+[gd_scene load_steps=3 format=3 uid="uid://bppntwk0041qs"]
 
 [ext_resource type="PackedScene" uid="uid://dqip1rqf4uu1v" path="res://levels/LevelBase.tscn" id="1_k1g1a"]
+[ext_resource type="PackedScene" uid="uid://bv6lfet11yn0t" path="res://scenes/StartStick.tscn" id="2_thu4o"]
 
 [node name="Level" instance=ExtResource("1_k1g1a")]
 count_variant = 2
+tutorial_card_angles = Array[int]([90, 130, 60, 90])
+
+[node name="Line2D" parent="Stick2" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -69, 55)
+
+[node name="Line2D" parent="Stick3" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -14, 79)
 
 [node name="LowerEdge" parent="." index="4"]
-points = PackedVector2Array(-200, 1250, 1200, 1250)
+points = PackedVector2Array(-200, 1000, 1200, 1000)
+
+[node name="Stick4" parent="." index="9" instance=ExtResource("2_thu4o")]
+position = Vector2(520, 780)
+
+[node name="Stick5" parent="." index="10" instance=ExtResource("2_thu4o")]
+position = Vector2(520, 780)
+
+[node name="Line2D" parent="Stick5" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -37, 31)
+
+[node name="Stick6" parent="." index="11" instance=ExtResource("2_thu4o")]
+position = Vector2(465, 756)
+
+[node name="Line2D" parent="Stick6" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -38, 33)
+
+[node name="Stick7" parent="." index="12" instance=ExtResource("2_thu4o")]
+position = Vector2(465, 756)
+
+[node name="Line2D" parent="Stick7" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -2, 56)
 
 [editable path="Stick"]
 [editable path="Stick2"]
 [editable path="Stick3"]
+[editable path="Stick5"]
+[editable path="Stick6"]
+[editable path="Stick7"]

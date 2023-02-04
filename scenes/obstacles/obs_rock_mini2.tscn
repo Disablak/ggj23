@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://buvqpsva2ldrj"]
+
+[ext_resource type="PackedScene" uid="uid://bih7q4qe873ha" path="res://scenes/obstacles/obs_rock_mini.tscn" id="1_hwrx2"]
+[ext_resource type="Texture2D" uid="uid://debognvhfqmav" path="res://assets/obstacles/small_rock_2.png" id="2_lc2bc"]
+
+[node name="Obstacle" instance=ExtResource("1_hwrx2")]
+
+[node name="Line2D" parent="." index="0"]
+points = PackedVector2Array(-29, -50, 11, -43, 41, -24, 32, 45, 5, 42, -39, 7, -32, -47)
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_lc2bc")

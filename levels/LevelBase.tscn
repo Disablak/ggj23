@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqip1rqf4uu1v"]
+[gd_scene load_steps=11 format=3 uid="uid://dqip1rqf4uu1v"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_8leeb"]
 [ext_resource type="PackedScene" uid="uid://bmcsnc8is2ew7" path="res://scenes/Stick.tscn" id="1_jo4in"]
 [ext_resource type="Texture2D" uid="uid://byf5dtjjm8ho3" path="res://assets/high_test2_plant.png" id="2_gkm1m"]
-[ext_resource type="Script" path="res://scripts/Obstacle.gd" id="2_n0qyq"]
 [ext_resource type="Texture2D" uid="uid://qeida55001id" path="res://assets/medium_test2_plant.png" id="3_4n16j"]
 [ext_resource type="Texture2D" uid="uid://dh35m428vp6uh" path="res://assets/background_plant.png" id="4_6pvtt"]
 [ext_resource type="Texture2D" uid="uid://rda4ekuesgo3" path="res://assets/mini_test2_plant.png" id="4_iwk58"]
@@ -46,14 +45,6 @@ is_start_stick = true
 
 [node name="Line2D" parent="Stick3" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 80)
-
-[node name="Obstacle" type="Node2D" parent="."]
-position = Vector2(-156, 1162)
-script = ExtResource("2_n0qyq")
-
-[node name="Line2D" type="Line2D" parent="Obstacle"]
-points = PackedVector2Array(0, 0, 100, 2.08165e-12)
-default_color = Color(1, 0.2, 0.160784, 1)
 
 [node name="LowerEdge" type="Line2D" parent="."]
 points = PackedVector2Array(-200, 1400, 1200, 1400)

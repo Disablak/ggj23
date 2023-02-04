@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://baq6cf3kb3y38"]
+
+[ext_resource type="PackedScene" uid="uid://dqip1rqf4uu1v" path="res://levels/LevelBase.tscn" id="1_gursp"]
+[ext_resource type="PackedScene" uid="uid://bv6lfet11yn0t" path="res://scenes/StartStick.tscn" id="2_i6y0n"]
+[ext_resource type="PackedScene" uid="uid://bih7q4qe873ha" path="res://scenes/obstacles/obs_rock_mini.tscn" id="3_0edwp"]
+
+[node name="Level" instance=ExtResource("1_gursp")]
+
+[node name="Line2D" parent="Stick" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 42, 60)
+
+[node name="Line2D" parent="Stick2" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -61, 43)
+
+[node name="Line2D" parent="Stick3" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -9, 84)
+
+[node name="LowerEdge" parent="." index="3"]
+points = PackedVector2Array(-200, 1000, 1200, 1000)
+
+[node name="Stick4" parent="." index="8" instance=ExtResource("2_i6y0n")]
+position = Vector2(523, 783)
+
+[node name="Line2D" parent="Stick4" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 28, 55)
+
+[node name="Stick5" parent="." index="9" instance=ExtResource("2_i6y0n")]
+position = Vector2(524, 784)
+
+[node name="Line2D" parent="Stick5" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -39, 43)
+
+[node name="Stick6" parent="." index="10" instance=ExtResource("2_i6y0n")]
+position = Vector2(524, 784)
+
+[node name="Line2D" parent="Stick6" index="3"]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, -48, 13)
+
+[node name="Obstacle" parent="." index="11" instance=ExtResource("3_0edwp")]
+position = Vector2(417, 864)
+
+[editable path="Stick"]
+[editable path="Stick2"]
+[editable path="Stick3"]
+[editable path="Stick4"]
+[editable path="Stick5"]
+[editable path="Stick6"]

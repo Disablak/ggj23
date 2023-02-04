@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://jr86lhp30vf4"]
+
+[ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_ibvj2"]
+[ext_resource type="Texture2D" uid="uid://dhs21y3idmcff" path="res://assets/obstacles/small_rock_1.png" id="2_s60r4"]
+
+[node name="Obstacle" type="Node2D"]
+position = Vector2(-156, 1162)
+script = ExtResource("1_ibvj2")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 100, 2.08165e-12)
+default_color = Color(1, 0.2, 0.160784, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s60r4")

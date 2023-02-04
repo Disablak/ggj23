@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bih7q4qe873ha"]
+
+[ext_resource type="PackedScene" uid="uid://jr86lhp30vf4" path="res://scenes/Obstacle.tscn" id="1_f877b"]
+
+[node name="Obstacle" instance=ExtResource("1_f877b")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Line2D" parent="." index="0"]
+points = PackedVector2Array(-48, -98, 67, -16, 59, 90, -3, 98, -55, 60, -77, 10, -56, -95)
