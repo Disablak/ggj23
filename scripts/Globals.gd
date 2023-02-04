@@ -24,3 +24,6 @@ var root_controller: RootController
 var visual_effects: VisualEffects
 var gui: GUI
 var card_points: Array[Vector2]
+
+func enable_input(enable : bool):
+		get_tree().get_root().set_disable_input(!enable)

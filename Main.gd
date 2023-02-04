@@ -15,6 +15,7 @@ const TWEEN_TIME = 1
 
 func _ready() -> void:
 	Global.on_game_over.connect(_on_game_over)
+	
 
 	gui.fade_show(false)
 	on_game_started()
@@ -44,6 +45,16 @@ func on_moved_to_game():
 
 
 func _on_game_over(is_win: bool):
+	Global.enable_input(false)
+	
+	if(root_controller.level.plant_sprite_tween and 
+	root_controller.level.plant_sprite_tween.is_running()):
+		await root_controller.level.plant_sprite_tween.finished
+		await get_tree().create_timer(0.5).timeout
+	
+	if(gui.change_score_tween and gui.change_score_tween.is_running()):
+		await gui.change_score_tween.finished
+		
 	await gui.fade_show(true).finished
 	await get_tree().create_timer(0.3).timeout
 
@@ -53,7 +64,7 @@ func _on_game_over(is_win: bool):
 		restart_level()
 
 	gui.fade_show(false)
-
+	Global.enable_input(true)
 
 func next_level():
 	level_id += 1

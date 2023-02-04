@@ -11,8 +11,11 @@ extends Control
 @onready var box_container: HBoxContainer = $HBoxContainer
 @onready var fade: ColorRect = $Fade
 
+var change_score_tween : Tween
+
 const FADE_TIME := 1
 const LABEL_WATER_TWEEN_DURATION := 1
+const MAX_WATER_VALUE := 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,13 +49,13 @@ func _on_updated_water(prev_value: int, cur_value: int):
 	if prev_value == cur_value:
 		return
 
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_method(set_label_water_text, prev_value,
+	change_score_tween = create_tween()
+	change_score_tween.set_trans(Tween.TRANS_SINE)
+	change_score_tween.tween_method(set_label_water_text, prev_value,
 		cur_value, LABEL_WATER_TWEEN_DURATION)
-	tween.tween_property(label_water, "scale",
+	change_score_tween.tween_property(label_water, "scale",
 		Vector2(1.2, 1.2), 0.2).from(Vector2.ONE)
-	tween.tween_property(label_water, "scale",
+	change_score_tween.tween_property(label_water, "scale",
 		Vector2.ONE, 0.2)
 
 func set_label_water_text(value: int):
@@ -84,7 +87,12 @@ func show_hint_water(cur_water: int, add_water: int):
 		return
 
 	if add_water > 0:
-		label_water.text = "{0} + {1}".format([cur_water, add_water])
+		if(cur_water == MAX_WATER_VALUE):
+			label_water.text = "{0}".format([cur_water])
+		elif cur_water + add_water > MAX_WATER_VALUE:
+			label_water.text = "{0} + {1}".format([cur_water, MAX_WATER_VALUE - cur_water])
+		else:
+			label_water.text = "{0} + {1}".format([cur_water, add_water])
 	else:
 		if cur_water + add_water <= 0:
 			label_water.label_settings.font_color = Color.RED

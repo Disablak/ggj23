@@ -11,10 +11,15 @@ const GROUND_START_Y := 700
 @export var count_variant := 4
 @export var tutorial_card_angles: Array[int]
 var cur_tutorial_card_id = 0
+var plant_sprite_tween : Tween
 
 @onready var line_lower_edge: Line2D = $LowerEdge
 @onready var plant_sprite: Sprite2D = $Plant
 
+func start_pulse_animation():
+	var tween = create_tween().set_loops()
+	tween.tween_property(line_lower_edge, "default_color:a", 1, 3)
+	tween.tween_property(line_lower_edge, "default_color:a", 0, 3)
 
 func update_plant_sprite(lower_stick_y: int):
 	var finish_y := line_lower_edge.get_point_position(0).y
@@ -35,12 +40,12 @@ func play_tween_change_sprite(texture: Texture2D):
 
 	plant_sprite.use_parent_material = true
 
-	var tween = create_tween()
-	tween.tween_property(plant_sprite, "self_modulate:a", 0.0, 0.5).from(1.0)
-	tween.tween_property(plant_sprite, "self_modulate:a", 1.0, 0.5).from(0.0)
-	await tween.step_finished
+	plant_sprite_tween = create_tween()
+	plant_sprite_tween.tween_property(plant_sprite, "self_modulate:a", 0.0, 0.5).from(1.0)
+	plant_sprite_tween.tween_property(plant_sprite, "self_modulate:a", 1.0, 0.5).from(0.0)
+	await plant_sprite_tween.step_finished
 	plant_sprite.texture = texture
-	await tween.step_finished
+	await plant_sprite_tween.step_finished
 	plant_sprite.use_parent_material = false
 
 
