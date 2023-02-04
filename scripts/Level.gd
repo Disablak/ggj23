@@ -15,6 +15,10 @@ var cur_tutorial_card_id = 0
 @onready var line_lower_edge: Line2D = $LowerEdge
 @onready var plant_sprite: Sprite2D = $Plant
 
+func _ready():
+	var tween = create_tween().set_loops()
+	tween.tween_property(line_lower_edge, "default_color:a", 0, 5)
+	tween.tween_property(line_lower_edge, "default_color:a", 1, 5)
 
 func update_plant_sprite(lower_stick_y: int):
 	var finish_y := line_lower_edge.get_point_position(0).y
