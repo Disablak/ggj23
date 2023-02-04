@@ -84,6 +84,7 @@ func deinit_game():
 
 func on_moved_down():
 	level.line_lower_edge.visible = true
+	level.start_pulse_animation()
 	await get_tree().process_frame
 	try_to_spawn_new_sticks()
 
