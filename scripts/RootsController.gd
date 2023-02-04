@@ -120,6 +120,8 @@ func _process(delta: float) -> void:
 
 		draw_hints.draw_hint(stick_pos, Color.RED)
 		draw_hints.draw_future_stick(future_stick_start, future_stick_end, Color.RED)
+		
+		selected_stick.line2d.visible = false
 
 		if future_stick_end.y > get_stick_end_pos(lowest_stick).y:
 			show_hint_water(-Globals.PART_WATER)
@@ -160,6 +162,7 @@ func move_stick():
 
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and selected_stick.can_drag:
 		selected_stick.position = get_global_mouse_position()
+		selected_stick.line2d.visible = true
 
 
 func on_start_drag_stick(id: int):
@@ -169,7 +172,9 @@ func on_start_drag_stick(id: int):
 func on_release_stick(id: int):
 	if cur_stick_id == -1:
 		return
-
+		
+	selected_stick.line2d.visible = true
+	
 	for stick in all_sticks_in_root:
 		var stick_pos = get_stick_end_pos(stick)
 		var distance_to_points = stick_pos.distance_to(get_stick_start_pos(selected_stick))
