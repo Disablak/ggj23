@@ -13,6 +13,7 @@ extends Control
 
 const FADE_TIME := 1
 const LABEL_WATER_TWEEN_DURATION := 1
+const MAX_WATER_VALUE := 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -84,7 +85,12 @@ func show_hint_water(cur_water: int, add_water: int):
 		return
 
 	if add_water > 0:
-		label_water.text = "{0} + {1}".format([cur_water, add_water])
+		if(cur_water == MAX_WATER_VALUE):
+			label_water.text = "{0}".format([cur_water])
+		elif cur_water + add_water > MAX_WATER_VALUE:
+			label_water.text = "{0} + {1}".format([cur_water, MAX_WATER_VALUE - cur_water])
+		else:
+			label_water.text = "{0} + {1}".format([cur_water, add_water])
 	else:
 		if cur_water + add_water <= 0:
 			label_water.label_settings.font_color = Color.RED
