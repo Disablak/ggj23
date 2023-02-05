@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cklgl30hr6mpj"]
+[gd_scene load_steps=15 format=3 uid="uid://cklgl30hr6mpj"]
 
 [ext_resource type="PackedScene" uid="uid://chpps3fg4hpyo" path="res://scenes/RootController.tscn" id="1_s3a7g"]
 [ext_resource type="Script" path="res://Main.gd" id="1_t3ajk"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://hsqh71mwy6rv" path="res://levels/Level7.tscn" id="9_epe01"]
 [ext_resource type="PackedScene" uid="uid://cvt1mvojyppj0" path="res://levels/Level8.tscn" id="10_dm6un"]
 [ext_resource type="PackedScene" uid="uid://bwj0vfp02eyly" path="res://levels/Level9.tscn" id="11_xgrox"]
+[ext_resource type="AudioStream" uid="uid://d03bn8o6n16b1" path="res://assets/Purple Planet Music - Daybreak (1_55) 100bpm.mp3" id="14_ecnrb"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_t3ajk")
@@ -35,6 +36,10 @@ text = "R.O.O.T.S."
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2.08165e-12, -800)
 offset = Vector2(540, 960)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_ecnrb")
+autoplay = true
 
 [connection signal="button_down" from="GUI/ButtonStart" to="." method="_on_button_start_button_down"]
 

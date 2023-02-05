@@ -7,6 +7,7 @@ extends Node2D
 @onready var root_controller: RootController = $RootController as RootController
 @onready var gui: GUI = $GUI as GUI
 @onready var camera = $Camera2D
+@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 const MENU_POS = Vector2(0, -800)
 const GAME_POS = Vector2.ZERO
