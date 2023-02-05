@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://ca4dceibtgf3a" path="res://assets/btn start plant.png" id="3_vnt5i"]
 [ext_resource type="FontFile" uid="uid://lc87qq27q66j" path="res://assets/Buda-Light.ttf" id="4_2n41u"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_jrvaq"]
-font = ExtResource("4_2n41u")
-font_size = 100
-
 [sub_resource type="LabelSettings" id="LabelSettings_85v8e"]
 font = ExtResource("4_2n41u")
 font_size = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_jrvaq"]
+font = ExtResource("4_2n41u")
+font_size = 100
 
 [sub_resource type="LabelSettings" id="LabelSettings_7myy6"]
 font = ExtResource("4_2n41u")
@@ -34,6 +34,14 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_ghebo")
 
+[node name="LabelTitle" type="Label" parent="."]
+offset_left = 198.0
+offset_top = -938.0
+offset_right = 845.0
+offset_bottom = -684.0
+text = "ROOTS"
+label_settings = SubResource("LabelSettings_85v8e")
+
 [node name="ButtonStart" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -53,8 +61,9 @@ scale = Vector2(0.3, 0.3)
 mouse_filter = 2
 texture = ExtResource("3_vnt5i")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -66,26 +75,25 @@ grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Point0" type="TextureRect" parent="HBoxContainer"]
+[node name="Point0" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_x6m6f")
 
-[node name="Point1" type="TextureRect" parent="HBoxContainer"]
+[node name="Point1" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_x6m6f")
 
-[node name="Point2" type="TextureRect" parent="HBoxContainer"]
+[node name="Point2" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_x6m6f")
 
-[node name="Point3" type="TextureRect" parent="HBoxContainer"]
+[node name="Point3" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_x6m6f")
 
-[node name="Fade" type="ColorRect" parent="."]
+[node name="Fade" type="ColorRect" parent="CanvasLayer"]
 visible = false
 z_index = 5
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -98,14 +106,15 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Water" type="Control" parent="."]
+[node name="Water" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 656.0
 offset_bottom = 179.0
 
-[node name="WaterIcon" type="TextureRect" parent="Water"]
+[node name="WaterIcon" type="TextureRect" parent="CanvasLayer/Water"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 14.0
@@ -114,7 +123,7 @@ offset_bottom = 1368.0
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("3_k8wh7")
 
-[node name="LabelWater" type="Label" parent="Water"]
+[node name="LabelWater" type="Label" parent="CanvasLayer/Water"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -126,24 +135,14 @@ text = "100"
 label_settings = SubResource("LabelSettings_jrvaq")
 vertical_alignment = 1
 
-[node name="LabelTitle" type="Label" parent="."]
-layout_mode = 0
-offset_left = 198.0
-offset_top = -938.0
-offset_right = 845.0
-offset_bottom = -684.0
-text = "ROOTS"
-label_settings = SubResource("LabelSettings_85v8e")
-
-[node name="LabelLvl" type="Label" parent="."]
-layout_mode = 1
+[node name="LabelLvl" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -170.0
-offset_top = 20.0
+offset_top = 120.0
 offset_right = -20.0
-offset_bottom = 206.0
+offset_bottom = 306.0
 grow_horizontal = 0
 pivot_offset = Vector2(2.08165e-12, 86)
 text = "L1
@@ -151,32 +150,30 @@ text = "L1
 label_settings = SubResource("LabelSettings_7myy6")
 horizontal_alignment = 2
 
-[node name="LabelScore" type="Label" parent="."]
-layout_mode = 1
+[node name="LabelScore" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -170.0
-offset_top = 89.0
+offset_top = 190.0
 offset_right = -20.0
-offset_bottom = 180.0
+offset_bottom = 281.0
 grow_horizontal = 0
 pivot_offset = Vector2(2.08165e-12, 86)
 text = "S0"
 label_settings = SubResource("LabelSettings_7myy6")
 horizontal_alignment = 2
 
-[node name="EndPanel" type="ColorRect" parent="."]
+[node name="EndPanel" type="ColorRect" parent="CanvasLayer"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="EndPanel"]
+[node name="Label" type="Label" parent="CanvasLayer/EndPanel"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -188,3 +185,14 @@ text = "T Y 4 G A M E"
 label_settings = SubResource("LabelSettings_kpmp4")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ButtonRestart" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[connection signal="button_down" from="CanvasLayer/ButtonRestart" to="." method="_on_button_restart_button_down"]

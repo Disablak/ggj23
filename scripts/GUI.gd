@@ -4,14 +4,15 @@ extends Control
 
 @onready var btn_start: Button = $ButtonStart
 @onready var btn_sprite: TextureRect = $TextureRect
-@onready var water: Control = $Water
-@onready var label_water: Label = $Water/LabelWater
-@onready var label_score: Label = $LabelScore
-@onready var label_lvl: Label = $LabelLvl
-@onready var box_container: HBoxContainer = $HBoxContainer
-@onready var fade: ColorRect = $Fade
-@onready var end_panel: Control = $EndPanel
-@onready var end_panel_label: Control = $EndPanel/Label
+@onready var water: Control = $CanvasLayer/Water
+@onready var label_water: Label = $CanvasLayer/Water/LabelWater
+@onready var label_score: Label = $CanvasLayer/LabelScore
+@onready var label_lvl: Label = $CanvasLayer/LabelLvl
+@onready var box_container: HBoxContainer = $CanvasLayer/HBoxContainer
+@onready var fade: ColorRect = $CanvasLayer/Fade
+@onready var end_panel: Control = $CanvasLayer/EndPanel
+@onready var end_panel_label: Control = $CanvasLayer/EndPanel/Label
+@onready var btn_restart: Control = $CanvasLayer/ButtonRestart
 
 var change_score_tween : Tween
 
@@ -71,14 +72,13 @@ func on_start_move_down():
 	btn_sprite.use_parent_material = true
 	var tween_alpha = create_tween()
 	tween_alpha.tween_property(btn_sprite, "self_modulate:a", 0.0, 0.5)
-#	await tween_alpha.finished
-#	btn_sprite.visible = false
 
 
 func on_moved_down():
 	water.visible = true
 	label_lvl.visible = true
 	label_score.visible = true
+	btn_restart.visible = true
 
 
 func show_hint_water(cur_water: int, add_water: int):
@@ -135,3 +135,7 @@ func show_end_panel():
 	var tween = create_tween()
 	tween.tween_property(end_panel, "self_modulate:a", 1.0, 1)
 	tween.tween_property(end_panel_label, "self_modulate:a", 1.0, 1)
+
+
+func _on_button_restart_button_down() -> void:
+	Global.on_game_over.emit(false)
