@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b618xsm84d0r3"]
+
+[ext_resource type="PackedScene" uid="uid://bih7q4qe873ha" path="res://scenes/obstacles/obs_rock_mini.tscn" id="1_n1mis"]
+[ext_resource type="Texture2D" uid="uid://dumbfmug27eyl" path="res://assets/krit.png" id="2_a4q1y"]
+
+[node name="Obstacle" instance=ExtResource("1_n1mis")]
+
+[node name="Line2D" parent="." index="0"]
+points = PackedVector2Array(-2, -165, 149, -137, 222, -63, 223, 73, 118, 132, -93, 166, -174, 144, -220, 55, -228, -32, -196, -100, -130, -145, -8, -163)
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_a4q1y")

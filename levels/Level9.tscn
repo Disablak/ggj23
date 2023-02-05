@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwj0vfp02eyly"]
+
+[ext_resource type="PackedScene" uid="uid://cvt1mvojyppj0" path="res://levels/Level8.tscn" id="1_d5t5c"]
+[ext_resource type="PackedScene" uid="uid://b618xsm84d0r3" path="res://scenes/obstacles/obs_krit.tscn" id="2_lhf2p"]
+
+[node name="Level" instance=ExtResource("1_d5t5c")]
+
+[node name="Obstacle" parent="." index="8"]
+position = Vector2(-907, 966)
+script = null
+
+[node name="Obstacle2" parent="." index="9"]
+position = Vector2(-519, 1053)
+script = null
+
+[node name="Obstacle3" parent="." index="10"]
+position = Vector2(-778, 1253)
+script = null
+
+[node name="Obstacle4" parent="." index="11" instance=ExtResource("2_lhf2p")]
+position = Vector2(532, 1056)
+
+[editable path="Stick"]
+[editable path="Stick2"]
+[editable path="Stick3"]

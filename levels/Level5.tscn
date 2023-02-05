@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bh8qffo130xtc" path="res://scenes/obstacles/obs_rock_mini3.tscn" id="3_0r48q"]
 [ext_resource type="Texture2D" uid="uid://bifhjlbkra5ap" path="res://assets/midle_cactus.png" id="3_5t2pn"]
 [ext_resource type="Texture2D" uid="uid://c60120rgkqu4p" path="res://assets/cactus_mini.png" id="4_rhi1j"]
-[ext_resource type="Texture2D" uid="uid://gf6s0p2a6gqm" path="res://assets/background_cactus (1).png" id="5_rtcb0"]
+[ext_resource type="Texture2D" uid="uid://crg5v0i834g41" path="res://assets/night_sand.png" id="5_b83x2"]
 [ext_resource type="Texture2D" uid="uid://bhf3v261cvn17" path="res://assets/sand.png" id="6_hdcqt"]
 
 [node name="Level" instance=ExtResource("1_7tuln")]
@@ -19,7 +19,7 @@ points = PackedVector2Array(-200, 1100, 1200, 1100)
 
 [node name="Background" parent="." index="4"]
 position = Vector2(535, -439)
-texture = ExtResource("5_rtcb0")
+texture = ExtResource("5_b83x2")
 
 [node name="Ground" parent="." index="5"]
 texture = ExtResource("6_hdcqt")
