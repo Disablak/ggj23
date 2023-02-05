@@ -134,6 +134,14 @@ func update_card_pos(count: int):
 
 func show_end_panel():
 	end_panel.visible = true
+	
+	var save_dict = {
+		"level_id" : 1
+	}
+	
+	var save_game = FileAccess.open("res://savegame.save", FileAccess.WRITE)
+	var json_string = JSON.stringify(save_dict)
+	save_game.store_line(json_string)
 
 	var tween = create_tween()
 	tween.tween_property(end_panel, "self_modulate:a", 1.0, 1)
