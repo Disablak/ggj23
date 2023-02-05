@@ -11,14 +11,19 @@
 [sub_resource type="LabelSettings" id="LabelSettings_85v8e"]
 font = ExtResource("4_2n41u")
 font_size = 200
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jrvaq"]
 font = ExtResource("4_2n41u")
 font_size = 100
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7myy6"]
 font = ExtResource("4_2n41u")
 font_size = 70
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kpmp4"]
 font = ExtResource("4_2n41u")
@@ -111,9 +116,9 @@ color = Color(0, 0, 0, 1)
 [node name="Water" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 10.0
+offset_left = 11.0
 offset_top = 10.0
-offset_right = 656.0
+offset_right = 657.0
 offset_bottom = 179.0
 
 [node name="WaterIcon" type="TextureRect" parent="CanvasLayer/Water"]

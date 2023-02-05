@@ -1,12 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmyhlhf3dtbva"]
+[gd_scene load_steps=8 format=3 uid="uid://cmyhlhf3dtbva"]
 
 [ext_resource type="PackedScene" uid="uid://dqip1rqf4uu1v" path="res://levels/LevelBase.tscn" id="1_pgu72"]
+[ext_resource type="Texture2D" uid="uid://tojv7oj7irf5" path="res://assets/cactus.png" id="2_1pb1t"]
 [ext_resource type="PackedScene" uid="uid://b3pvxu7rchdmk" path="res://scenes/obstacles/obstacle_scull.tscn" id="2_kwimj"]
+[ext_resource type="Texture2D" uid="uid://bifhjlbkra5ap" path="res://assets/midle_cactus.png" id="3_p4cmb"]
+[ext_resource type="Texture2D" uid="uid://c60120rgkqu4p" path="res://assets/cactus_mini.png" id="4_mtl7o"]
+[ext_resource type="Texture2D" uid="uid://gf6s0p2a6gqm" path="res://assets/background_cactus (1).png" id="5_nodg1"]
+[ext_resource type="Texture2D" uid="uid://bhf3v261cvn17" path="res://assets/sand.png" id="6_pu3kb"]
 
 [node name="Level" instance=ExtResource("1_pgu72")]
+HIGH_SPRITE = ExtResource("2_1pb1t")
+MEDIUM_SPRITE = ExtResource("3_p4cmb")
+LOW_SPRITE = ExtResource("4_mtl7o")
 
 [node name="LowerEdge" parent="." index="3"]
 points = PackedVector2Array(-200, 1100, 1200, 1100)
+
+[node name="Background" parent="." index="4"]
+position = Vector2(535, -439)
+texture = ExtResource("5_nodg1")
+
+[node name="Ground" parent="." index="5"]
+texture = ExtResource("6_pu3kb")
+
+[node name="Grass" parent="." index="6"]
+visible = false
+
+[node name="Plant" parent="." index="7"]
+position = Vector2(523, 435)
+texture = ExtResource("4_mtl7o")
 
 [node name="Obstacle" parent="." index="8" instance=ExtResource("2_kwimj")]
 position = Vector2(535, 982)

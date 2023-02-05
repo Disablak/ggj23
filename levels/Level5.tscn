@@ -1,13 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8771sed1gxm8"]
+[gd_scene load_steps=9 format=3 uid="uid://c8771sed1gxm8"]
 
 [ext_resource type="PackedScene" uid="uid://dqip1rqf4uu1v" path="res://levels/LevelBase.tscn" id="1_7tuln"]
+[ext_resource type="Texture2D" uid="uid://tojv7oj7irf5" path="res://assets/cactus.png" id="2_6mroc"]
 [ext_resource type="PackedScene" uid="uid://buvqpsva2ldrj" path="res://scenes/obstacles/obs_rock_mini2.tscn" id="2_8gciu"]
 [ext_resource type="PackedScene" uid="uid://bh8qffo130xtc" path="res://scenes/obstacles/obs_rock_mini3.tscn" id="3_0r48q"]
+[ext_resource type="Texture2D" uid="uid://bifhjlbkra5ap" path="res://assets/midle_cactus.png" id="3_5t2pn"]
+[ext_resource type="Texture2D" uid="uid://c60120rgkqu4p" path="res://assets/cactus_mini.png" id="4_rhi1j"]
+[ext_resource type="Texture2D" uid="uid://gf6s0p2a6gqm" path="res://assets/background_cactus (1).png" id="5_rtcb0"]
+[ext_resource type="Texture2D" uid="uid://bhf3v261cvn17" path="res://assets/sand.png" id="6_hdcqt"]
 
 [node name="Level" instance=ExtResource("1_7tuln")]
+HIGH_SPRITE = ExtResource("2_6mroc")
+MEDIUM_SPRITE = ExtResource("3_5t2pn")
+LOW_SPRITE = ExtResource("4_rhi1j")
 
 [node name="LowerEdge" parent="." index="3"]
 points = PackedVector2Array(-200, 1100, 1200, 1100)
+
+[node name="Background" parent="." index="4"]
+position = Vector2(535, -439)
+texture = ExtResource("5_rtcb0")
+
+[node name="Ground" parent="." index="5"]
+texture = ExtResource("6_hdcqt")
+
+[node name="Grass" parent="." index="6"]
+visible = false
+
+[node name="Plant" parent="." index="7"]
+position = Vector2(523, 435)
+texture = ExtResource("4_rhi1j")
 
 [node name="Obstacle" parent="." index="8" instance=ExtResource("2_8gciu")]
 position = Vector2(649, 965)

@@ -15,7 +15,7 @@ const TWEEN_TIME = 1
 
 func _ready() -> void:
 	Global.on_game_over.connect(_on_game_over)
-	
+
 	gui.fade_show(false)
 	on_game_started()
 
@@ -25,17 +25,17 @@ func on_game_started():
 		var save_game = FileAccess.open("res://savegame.save", FileAccess.READ)
 		while save_game.get_position() < save_game.get_length():
 			var json_string = save_game.get_line()
-			
+
 			var json = JSON.new()
-			
+
 			var parse_result = json.parse(json_string)
 			if not parse_result == OK:
 				continue
-			
+
 			var node_data = json.get_data()
 			level_id = node_data["level_id"]
 			Global.emit_signal("on_changed_level", level_id)
-	
+
 	var spawned_level = levels[level_id].instantiate()
 	root_controller.init_game(spawned_level)
 
@@ -88,15 +88,15 @@ func next_level():
 	if level_id >= levels.size():
 		gui.show_end_panel()
 		return
-	
+
 	var save_dict = {
 		"level_id" : level_id
 	}
-	
+
 	var save_game = FileAccess.open("res://savegame.save", FileAccess.WRITE)
 	var json_string = JSON.stringify(save_dict)
 	save_game.store_line(json_string)
-	
+
 	restart_level()
 
 
