@@ -56,12 +56,13 @@ func _on_game_over(is_win: bool):
 		await gui.change_score_tween.finished
 
 	await gui.fade_show(true).finished
-	await get_tree().create_timer(0.3).timeout
 
 	if is_win:
 		next_level()
 	else:
 		restart_level()
+
+	await get_tree().create_timer(0.8).timeout
 
 	gui.fade_show(false)
 	Global.enable_input(true)
@@ -71,7 +72,7 @@ func next_level():
 	Global.on_changed_level.emit(level_id)
 
 	if level_id >= levels.size():
-		print("All levels completed")
+		gui.show_end_panel()
 		return
 
 	restart_level()

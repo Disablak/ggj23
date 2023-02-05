@@ -34,12 +34,12 @@ var cur_score: int = 0:
 
 var cur_water: int = 100:
 	set(value):
-		if Global.DEBUG:
-			return
-
 		var prev_value := cur_water
 		cur_water = clampi(value, 0, Global.MAX_WATER)
 		Global.on_updated_water.emit(prev_value, cur_water)
+
+		if Global.DEBUG:
+			return
 
 		if cur_water == 0:
 			Global.on_game_over.emit(false)
@@ -96,6 +96,11 @@ func find_all_obstacles():
 	for child in level.get_children():
 		if child is Obstacle:
 			obstacles.append(child)
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") and Global.DEBUG:
+		Global.on_game_over.emit(true)
 
 
 func _process(delta: float) -> void:

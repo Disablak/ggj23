@@ -10,6 +10,8 @@ extends Control
 @onready var label_lvl: Label = $LabelLvl
 @onready var box_container: HBoxContainer = $HBoxContainer
 @onready var fade: ColorRect = $Fade
+@onready var end_panel: Control = $EndPanel
+@onready var end_panel_label: Control = $EndPanel/Label
 
 var change_score_tween : Tween
 
@@ -126,3 +128,10 @@ func update_card_pos(count: int):
 		Global.card_points.append(pos)
 		child.visible = false
 
+
+func show_end_panel():
+	end_panel.visible = true
+
+	var tween = create_tween()
+	tween.tween_property(end_panel, "self_modulate:a", 1.0, 1)
+	tween.tween_property(end_panel_label, "self_modulate:a", 1.0, 1)

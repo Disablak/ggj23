@@ -1,7 +1,7 @@
 class_name Globals
 extends Node
 
-const DEBUG := false
+const DEBUG := true
 
 const STICK_SIZE := 80
 const MAX_STICK_SIZE := 80
