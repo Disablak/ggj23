@@ -10,17 +10,17 @@ tutorial_card_angles = Array[int]([90, 110, 70, 90, 110, 70])
 [node name="Line2D" parent="Stick3" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, -18, 88)
 
-[node name="LowerEdge" parent="." index="4"]
+[node name="LowerEdge" parent="." index="3"]
 points = PackedVector2Array(-200, 900, 1200, 900)
 
-[node name="Stick4" parent="." index="9" instance=ExtResource("2_ok2uy")]
+[node name="Stick4" parent="." index="8" instance=ExtResource("2_ok2uy")]
 position = Vector2(588, 753)
 
 [node name="Line2D" parent="Stick4" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 49, 56)
 width = 20.0
 
-[node name="Stick7" parent="." index="10" instance=ExtResource("2_ok2uy")]
+[node name="Stick7" parent="." index="9" instance=ExtResource("2_ok2uy")]
 position = Vector2(586, 752)
 
 [node name="Line2D" parent="Stick7" index="3"]

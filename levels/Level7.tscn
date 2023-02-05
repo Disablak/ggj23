@@ -1,14 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://hsqh71mwy6rv"]
+[gd_scene load_steps=9 format=3 uid="uid://hsqh71mwy6rv"]
 
 [ext_resource type="PackedScene" uid="uid://dqip1rqf4uu1v" path="res://levels/LevelBase.tscn" id="1_185xx"]
+[ext_resource type="Texture2D" uid="uid://df55cmed4bf06" path="res://assets/bg.png" id="2_2njvd"]
+[ext_resource type="Texture2D" uid="uid://8c785wqxag6o" path="res://assets/mushroom 3.png" id="2_n5pxt"]
 [ext_resource type="PackedScene" uid="uid://ron7fitmbec7" path="res://scenes/obstacles/obs_murashnik.tscn" id="2_pwji0"]
+[ext_resource type="Texture2D" uid="uid://bdeoejvppxyke" path="res://assets/mushroom 2.png" id="3_5d61p"]
 [ext_resource type="PackedScene" uid="uid://010iiba8ptlk" path="res://scenes/obstacles/obs_rock_mini4.tscn" id="3_h3yet"]
+[ext_resource type="Texture2D" uid="uid://dq8vi8glhyla6" path="res://assets/mushroom 1.png" id="4_e2f2o"]
 [ext_resource type="PackedScene" uid="uid://buvqpsva2ldrj" path="res://scenes/obstacles/obs_rock_mini2.tscn" id="4_e3e3g"]
 
 [node name="Level" instance=ExtResource("1_185xx")]
+HIGH_SPRITE = ExtResource("2_n5pxt")
+MEDIUM_SPRITE = ExtResource("3_5d61p")
+LOW_SPRITE = ExtResource("4_e2f2o")
 
 [node name="LowerEdge" parent="." index="3"]
 points = PackedVector2Array(-200, 1300, 1200, 1300)
+
+[node name="Background" parent="." index="4"]
+position = Vector2(535, 150)
+scale = Vector2(1.2, 1.092)
+texture = ExtResource("2_2njvd")
+
+[node name="Grass" parent="." index="6"]
+visible = false
+
+[node name="Plant" parent="." index="7"]
+position = Vector2(537, 429)
+texture = ExtResource("4_e2f2o")
 
 [node name="Obstacle" parent="." index="8" instance=ExtResource("2_pwji0")]
 position = Vector2(558, 1023)

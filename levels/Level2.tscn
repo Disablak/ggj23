@@ -13,25 +13,25 @@ points = PackedVector2Array(2.08165e-12, 2.08165e-12, -69, 55)
 [node name="Line2D" parent="Stick3" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, -14, 79)
 
-[node name="LowerEdge" parent="." index="4"]
+[node name="LowerEdge" parent="." index="3"]
 points = PackedVector2Array(-200, 1000, 1200, 1000)
 
-[node name="Stick4" parent="." index="9" instance=ExtResource("2_thu4o")]
+[node name="Stick4" parent="." index="8" instance=ExtResource("2_thu4o")]
 position = Vector2(520, 780)
 
-[node name="Stick5" parent="." index="10" instance=ExtResource("2_thu4o")]
+[node name="Stick5" parent="." index="9" instance=ExtResource("2_thu4o")]
 position = Vector2(520, 780)
 
 [node name="Line2D" parent="Stick5" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, -37, 31)
 
-[node name="Stick6" parent="." index="11" instance=ExtResource("2_thu4o")]
+[node name="Stick6" parent="." index="10" instance=ExtResource("2_thu4o")]
 position = Vector2(465, 756)
 
 [node name="Line2D" parent="Stick6" index="3"]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, -38, 33)
 
-[node name="Stick7" parent="." index="12" instance=ExtResource("2_thu4o")]
+[node name="Stick7" parent="." index="11" instance=ExtResource("2_thu4o")]
 position = Vector2(465, 756)
 
 [node name="Line2D" parent="Stick7" index="3"]
