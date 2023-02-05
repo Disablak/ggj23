@@ -166,6 +166,16 @@ text = "S0"
 label_settings = SubResource("LabelSettings_7myy6")
 horizontal_alignment = 2
 
+[node name="ButtonRestart" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -108.0
+offset_bottom = 108.0
+grow_horizontal = 0
+icon = ExtResource("7_i86a6")
+flat = true
+
 [node name="EndPanel" type="ColorRect" parent="CanvasLayer"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
@@ -187,15 +197,5 @@ text = "T Y 4 G A M E"
 label_settings = SubResource("LabelSettings_kpmp4")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ButtonRestart" type="Button" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -100.0
-offset_bottom = 100.0
-grow_horizontal = 0
-icon = ExtResource("7_i86a6")
-flat = true
 
 [connection signal="button_down" from="CanvasLayer/ButtonRestart" to="." method="_on_button_restart_button_down"]
