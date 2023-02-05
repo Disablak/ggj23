@@ -16,7 +16,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_t3ajk")
-level_id = 9
+level_id = 1
 levels = Array[PackedScene]([ExtResource("2_s1o58"), ExtResource("3_5cek2"), ExtResource("4_10t4c"), ExtResource("5_she3j"), ExtResource("6_i4mgm"), ExtResource("7_yjc6g"), ExtResource("8_d6v7r"), ExtResource("9_epe01"), ExtResource("10_dm6un"), ExtResource("11_xgrox")])
 
 [node name="RootController" parent="." instance=ExtResource("1_s3a7g")]
