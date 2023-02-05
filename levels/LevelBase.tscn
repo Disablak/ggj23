@@ -53,8 +53,8 @@ default_color = Color(0.513726, 0.513726, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -5
-position = Vector2(535, 81)
-scale = Vector2(0.4, 0.364)
+position = Vector2(535, -398)
+scale = Vector2(0.5, 0.455)
 texture = ExtResource("4_6pvtt")
 
 [node name="Ground" type="Sprite2D" parent="."]

@@ -13,6 +13,7 @@ extends Control
 @onready var end_panel: Control = $CanvasLayer/EndPanel
 @onready var end_panel_label: Control = $CanvasLayer/EndPanel/Label
 @onready var btn_restart: Control = $CanvasLayer/ButtonRestart
+@onready var label_title: Control = $LabelTitle
 
 var change_score_tween : Tween
 
@@ -32,6 +33,7 @@ func _ready() -> void:
 	fade.visible = true
 	label_score.visible = false
 	label_lvl.visible = false
+	btn_restart.visible = false
 
 	await get_tree().process_frame
 	for child in box_container.get_children():
@@ -75,6 +77,7 @@ func on_start_move_down():
 
 
 func on_moved_down():
+	label_title.visible = false
 	water.visible = true
 	label_lvl.visible = true
 	label_score.visible = true
